@@ -5,9 +5,9 @@ import Navbar from "@/components/core/header/Navbar"
 const HomePage =() => {
     return(
         <div>
-            <Navbar/>
+            
             <LogIn/>
-            <Footer/>
+            
         </div>
     )
 }
