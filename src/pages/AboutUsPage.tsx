@@ -1,7 +1,11 @@
+import Registration from "@/components/core/auth/Registration"
+import LogIn from "@/components/core/auth/LogIn"
+
 const AboutUsPage = () =>{
     return(
         <div>
-            about us
+           <Registration/>
+           <LogIn/>
         </div>
     )
 }
