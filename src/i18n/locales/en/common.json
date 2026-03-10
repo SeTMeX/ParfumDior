@@ -2,5 +2,36 @@
     "hello": "Hello",
     "homePage":{
         "title": "Products Luxorious"
-    }   
+    },
+    "navBar": {
+        "centralDiv": {
+            "features": "FEATURES",
+            "solutions": "SOLUTIONS",
+            "company": "COMPANY",
+            "get-started": "GET STARTED"
+        },
+        "leftDiv": {
+            "sign-in": "Sign In",
+            "log-in": "Log In"
+        }
+    },
+    "footer": {
+        "left-sec": {
+            "p-text": "We are a premium fragrance brand crafting distinctive scents designed to elevate everyday moments."
+        },
+        "newsletter": {
+            "subtext1": "Subscribe to",
+            "subtext2": " get Our Newsletter",
+            "email": "Enter your email",
+            "subbtn": "Subscribe",
+            "adress": "ADRESS",
+            "phone": "PHONE"
+        },
+        "bottomsec": {
+            "rights": "All Rights Reserved",
+            "faq": "FAQ",
+            "terms": "Term of Service",
+            "policy": "Privacy Policy"
+        }
+    }
 }
