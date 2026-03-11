@@ -42,5 +42,11 @@
             "terms": "Term of Service",
             "policy": "Privacy Policy"
         }
+    },
+    "SignUp": {
+        "create": "Create a free account with your email",
+        "name": "Full Name",
+        "password": "Password",
+        "alreadyHave": "Have an account?"
     }
 }

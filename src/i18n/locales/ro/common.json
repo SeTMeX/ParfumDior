@@ -41,6 +41,11 @@
             "faq": "Întrebări frecvente",
             "terms": "Termeni de utilizare",
             "policy": "Politica de confidențialitate"
-        }
+        },
+    "SignUp": {
+        "create": "Creează un cont gratuit cu adresa ta de e-mail",
+        "name": "Nume Complet",
+        "password": "Parola",
+        "alreadyHave": "Ai deja un cont?"
     }
-}
+}}
