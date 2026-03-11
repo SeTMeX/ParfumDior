@@ -1,6 +1,15 @@
 {
     "hello": "Hello",
-    "homePage":{
+    "homePage": {
         "title": "Products Luxorious"
-    }   
+    },
+    "newArrivals": "New Arrivals",
+    "allProducts": "All Products →",
+    "allScents": "All Scents",
+    "descriptionText": "Exceptional fragrance crafted with premium ingredients.",
+    "fragrancesYouWont": "Fragrances You Won't",
+    "findElsewhere": "Find Elsewhere.",
+    "signatureCollection": "Signature Collection",
+    "highQualityFairPrice": "High Quality, Fair Price",
+    "sourceIngredientsText": "We source ingredients from the same houses luxury brands use to create exceptional fragrances."
 }

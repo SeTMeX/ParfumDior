@@ -1,6 +1,15 @@
 {
     "hello": "Salut",
-    "homePage":{
+    "homePage": {
         "title": "Produse Luxoase"
-    }
+    },
+    "newArrivals": "Noutăți",
+    "allProducts": "Toate Produsele →",
+    "allScents": "Toate Aromele",
+    "descriptionText": "Parfum excepțional realizat cu ingrediente premium.",
+    "fragrancesYouWont": "Parfumuri pe care nu le",
+    "findElsewhere": "vei găsi în altă parte.",
+    "signatureCollection": "Colecție Semnătură",
+    "highQualityFairPrice": "Calitate Înaltă, Preț Corect",
+    "sourceIngredientsText": "Folosim ingrediente de la aceleași case ca brandurile de lux pentru a crea parfumuri excepționale."
 }
