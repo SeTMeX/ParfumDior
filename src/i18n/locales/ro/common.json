@@ -11,5 +11,36 @@
     "vanilla": "Vanilie",
     "melon": "Pepene",
     "amber": "Chihlimbar"
-  }
+  },
+    "navBar": {
+        "centralDiv": {
+            "features": "FUNCȚIONALITĂȚI",
+            "solutions": "SOLUȚII",
+            "company": "COMPANIE",
+            "get-started": "ÎNCEPE"
+        },
+        "leftDiv": {
+            "sign-in": "Înregistrare",
+            "log-in": "Autentificare"
+        }
+    },
+    "footer": {
+        "left-sec": {
+            "p-text": "Suntem un brand premium de parfumuri care creează arome distinctive, concepute pentru a îmbunătăți momentele de zi cu zi."
+        },
+        "newsletter": {
+            "subtext1": "Abonează-te pentru",
+            "subtext2": " a primi newsletterul nostru",
+            "email": "Introdu emailul tău",
+            "subbtn": "Abonează-te",
+            "adress": "ADRESA",
+            "phone": "TELEFON"
+        },
+        "bottomsec": {
+            "rights": "Toate drepturile rezervate",
+            "faq": "Întrebări frecvente",
+            "terms": "Termeni de utilizare",
+            "policy": "Politica de confidențialitate"
+        }
+    }
 }
