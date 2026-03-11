@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { Heart, ShoppingCart, Home, Sun, Moon } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
+    const{i18n} = useTranslation()
 
     useEffect(() => {
         const handleScroll = () => {
@@ -13,7 +15,9 @@ const Navbar = () => {
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
-
+    const changeLng = (lng:string) =>{
+        i18n.changeLanguage(lng)
+    }
     return (
         <nav
             className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
@@ -26,7 +30,7 @@ const Navbar = () => {
 
                 {/* left section */}
                 <div className="flex items-center gap-6 flex-1">
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 ">
                         <button className="p-2 rounded-full hover:bg-accent transition text-muted-foreground">
                             <Sun size={20} />
                         </button>
@@ -34,6 +38,19 @@ const Navbar = () => {
                             <Moon size={20} />
                         </button>
                     </div>
+                </div>
+                <div className="bg-white flex gap-2">
+                    <button onClick={()=>{
+                        changeLng('ro')
+                    }}>
+                        ro
+                    </button>
+
+                    <button onClick={()=>{
+                        changeLng('en')
+                    }}>
+                        en
+                    </button>
                 </div>
 
                 {/* center section */}

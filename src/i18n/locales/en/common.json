@@ -1,0 +1,15 @@
+{
+  "homePage": {
+    "title": "Luxury Products",
+    "span1": "An extraordinary concentration of aromas that combines",
+    "span2": "the freshness of spices with the warmth of wood.",
+    "button": "BUY NOW"
+  },
+  "flavors": {
+    "jasmine": "Jasmine",
+    "rose": "Rose",
+    "vanilla": "Vanilla",
+    "melon": "Melon",
+    "amber": "Amber"
+  }
+}
