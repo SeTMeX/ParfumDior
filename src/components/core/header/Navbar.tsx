@@ -7,12 +7,10 @@ import LogIn from "@/components/core/auth/LogIn.tsx";
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
-    const [showAuth, setShowAuth] = useState(false)
-    const [isLogin, setIsLogin] = useState(false)
+    const [showRegister, setShowRegister] = useState(false)
+    const [showLogin, setShowLogin] = useState(false)
 
-    const{i18n} = useTranslation()
-    const{t} = useTranslation()
-
+    const{i18n, t} = useTranslation()
 
     useEffect(() => {
         const handleScroll = () => {
@@ -60,6 +58,8 @@ const Navbar = () => {
                     </div>
                 </div>
 
+                
+
                 {/* center section */}
                 <div className="flex items-center gap-1.5 text-muted-foreground bg-card rounded-2xl px-1.5 py-2">
                     <Link
@@ -104,9 +104,11 @@ const Navbar = () => {
                     {/* signin login */}
                     <div className="flex items-center gap-1.5 text-muted-foreground rounded-2xl px-2 py-1.5">
                         <button className="hover:bg-accent hover:text-accent-foreground bg-secondary hover:scale-110 rounded-lg font-medium px-4 py-1.5 transition text-sm tracking-wide"
-                            onClick={() => { setShowAuth(true); setIsLogin(false) }}>{t("navBar.leftDiv.sign-in")}</button>
+                            onClick={() => { setShowRegister(true); }}>{t("navBar.leftDiv.sign-in")}</button>
                         <button className="hover:bg-accent hover:text-accent-foreground bg-secondary hover:scale-110 rounded-lg font-medium px-4 py-1.5 transition text-sm tracking-wide"
-                            onClick={() => { setShowAuth(true); setIsLogin(true) }}>{t("navBar.leftDiv.log-in")}</button>
+                            onClick={() => { 
+                                setShowLogin(true);
+                            }}>{t("navBar.leftDiv.log-in")}</button>
                     </div>
 
                     <button className="p-2 rounded-full hover:bg-accent transition text-muted-foreground">
@@ -126,17 +128,8 @@ const Navbar = () => {
 
             </div>
 
-            {showAuth && (
-                <div className="fixed inset-0 flex items-center justify-center z-50 bg-black/50 backdrop-blur-sm"
-                     onClick={() => setShowAuth(false)}>
-                    <div onClick={(e) => e.stopPropagation()}>
-                        {isLogin
-                            ? <LogIn onSwitch={() => setIsLogin(false)} />
-                            : <Registration onSwitch={() => setIsLogin(true)} />
-                        }
-                    </div>
-                </div>
-            )}
+            <LogIn show={showLogin} onClose={() => setShowLogin(false)}/>
+            <Registration show={showRegister} onClose={() => setShowRegister(false)}/>
         </nav>
     );
 };

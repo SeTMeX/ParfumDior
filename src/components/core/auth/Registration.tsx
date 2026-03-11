@@ -1,20 +1,32 @@
 // components/RegisterForm.tsx
-import type { FormEvent } from 'react';
+// import type { FormEvent } from 'react';
 
-const RegisterForm = () => {
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log("Register form submitted");
-  };
+import {
+  Dialog,
+  DialogContent,
+} from "@/components/ui/dialog"
+
+interface RegisterFormProps {
+  show: boolean;
+  onClose: () => void;
+}
+
+const RegisterForm = ({ show, onClose }: RegisterFormProps) => {
+  // const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   console.log("Register form submitted");
+  // };
 
   return (
-    <div className="w-full max-w-sm rounded-xl bg-gray-900 p-8 text-gray-100 shadow-lg">
+    <Dialog open={show} onOpenChange={onClose} >
+      <DialogContent className="p-0 border-none " showCloseButton={false}>
+        <div className="w-full rounded-lg bg-gray-900 p-8 text-gray-100 shadow-lg">
       <p className="text-center text-2xl font-bold mb-2">Sign Up</p>
       <p className="text-center text-sm text-gray-400 mb-6">
         Create your free account
       </p>
 
-      <form onSubmit={handleSubmit} className="mt-6">
+      <div className="mt-6">
         <div className="mt-4">
           <label
             htmlFor="fullname"
@@ -69,7 +81,7 @@ const RegisterForm = () => {
         >
           Create Account
         </button>
-      </form>
+      </div>
 
       <div className="flex items-center my-6">
         <div className="h-px flex-1 bg-gray-700" />
@@ -116,6 +128,8 @@ const RegisterForm = () => {
         </a>
       </p>
     </div>
+        </DialogContent>
+    </Dialog>
   );
 };
 

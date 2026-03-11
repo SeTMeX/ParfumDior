@@ -13,7 +13,7 @@ const HomePage =() => {
                 <div className='flex flex-row justify-center mt-8 gap-5'>
                     <Button text={t("homePage.button")} className="h-14 w-36" />
                     <span className='text-white py-3 text-2xl'>
-                        480.
+                        $120.
                         <span className='text-gray-600'>00</span></span>
                 </div>
             </div>
