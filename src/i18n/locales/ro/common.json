@@ -53,10 +53,41 @@
       "policy": "Politica de confidențialitate"
     }
   },
-  "SignUp": {
-    "create": "Creează un cont gratuit cu adresa ta de e-mail",
+  "footer": {
+        "left-sec": {
+            "p-text": "Suntem un brand premium de parfumuri care creează arome distinctive, concepute pentru a îmbunătăți momentele de zi cu zi."
+        },
+        "newsletter": {
+            "subtext1": "Abonează-te pentru",
+            "subtext2": " a primi newsletterul nostru",
+            "email": "Introdu emailul tău",
+            "subbtn": "Abonează-te",
+            "adress": "ADRESA",
+            "phone": "TELEFON"
+        },
+        "bottomsec": {
+            "rights": "Toate drepturile rezervate",
+            "faq": "Întrebări frecvente",
+            "terms": "Termeni de utilizare",
+            "policy": "Politica de confidențialitate"
+        },
+    "SignUp": {
+        "create": "Creează un cont gratuit cu adresa ta de e-mail",
     "name": "Nume Complet",
     "password": "Parola",
-    "alreadyHave": "Ai deja un cont?"
-  }
+    "alreadyHave": "Ai deja un cont?",
+    "title": "Înregistrare",
+    "subtitle": "Creează-ți contul gratuit",
+    "fullName": "Nume Complet",
+    "fullNamePlaceholder": "Introdu numele tău complet",
+    "email": "Email",
+    "emailPlaceholder": "Introdu adresa de email",
+    "password": "Parolă",
+    "passwordPlaceholder": "Creează o parolă",
+    "createAccount": "Creează Cont",
+    "orSignUpWith": "sau înregistrează-te cu",
+    "alreadyHaveAccount": "Ai deja un cont?",
+    "loginHere": "Autentifică-te aici"
+    }
+}
 }

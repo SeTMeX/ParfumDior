@@ -1,14 +1,14 @@
-import {
-  Dialog,
-  DialogContent,
-  DialogTitle,
-} from "@/components/ui/dialog"
+// import {
+//   Dialog,
+//   DialogContent,
+//   DialogTitle,
+// } from "@/components/ui/dialog"
 
-interface LogInFormProps {
-  show: boolean;
-  onClose: () => void;
-}
-const LogInForm = ({ show, onClose }: LogInFormProps) => {
+// interface LogInFormProps {
+//   show: boolean;
+//   onClose: () => void;
+// }
+const LogInForm = () => {
   // const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
   //   e.preventDefault();
   //   console.log("Form submitted");
@@ -17,9 +17,8 @@ const LogInForm = ({ show, onClose }: LogInFormProps) => {
   return (
 
 
-    <Dialog open={show} onOpenChange={onClose} >
-      <DialogContent className="p-0 border-none " showCloseButton={false}>
-        <DialogTitle className="hidden"/>
+    // <Dialog open={show} onOpenChange={onClose} >
+    //   <DialogContent className="p-0 border-none max-w-md w-[calc(100%-2rem)] mx-auto max-h-[90vh] overflow-y-auto" showCloseButton={false}>        <DialogTitle className="hidden"/>
         <div className="w-full rounded-lg bg-gray-900 p-8 text-gray-100 shadow-lg">
           <p className="text-center text-2xl font-bold mb-2">Login</p>
 
@@ -108,15 +107,15 @@ const LogInForm = ({ show, onClose }: LogInFormProps) => {
             </button>
           </div>
 
-          <p className="text-center text-sm mt-6 text-gray-400">
+          {/* <p className="text-center text-sm mt-6 text-gray-400">
             Don't have an account?{" "}
             <a href="#" className="text-blue-400 hover:text-blue-300 hover:underline">
               Sign up
             </a>
-          </p>
+          </p> */}
         </div>
-      </DialogContent>
-    </Dialog>
+    //   </DialogContent>
+    // </Dialog>
   );
 };
 
