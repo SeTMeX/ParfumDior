@@ -57,19 +57,7 @@ const Navbar = () => {
                         </button>
                     </div>
                 </div>
-                <div className="bg-white flex gap-2">
-                    <button onClick={()=>{
-                        changeLng('ro')
-                    }}>
-                        ro
-                    </button>
-
-                    <button onClick={()=>{
-                        changeLng('en')
-                    }}>
-                        en
-                    </button>
-                </div>
+                
 
                 
 

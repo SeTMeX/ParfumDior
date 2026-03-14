@@ -29,7 +29,7 @@ const HomePage = () => {
           <Button text="BUY NOW" className="h-12 w-32 md:h-14 md:w-36" />
 
           <span className="text-white py-3 text-lg md:text-2xl">
-            {t("hello!")}
+            480.
             <span className="text-gray-600">00</span>
           </span>
         </div>
