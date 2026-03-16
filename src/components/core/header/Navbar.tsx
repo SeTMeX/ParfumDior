@@ -6,9 +6,15 @@ import NavbarMobileMenu from "@/components/core/header/NavbarMobileMenu.tsx";
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
+<<<<<<< HEAD
     const [menuOpen, setMenuOpen] = useState(false);
     const { i18n, t } = useTranslation();
     const location = useLocation();
+=======
+    const{i18n} = useTranslation()
+    const{t} = useTranslation()
+
+>>>>>>> 902aedf96e58136f3bf41d7768c4752ef9b20c00
 
     useEffect(() => {
         const handleScroll = () => {
@@ -48,6 +54,7 @@ const Navbar = () => {
                         </button>
                     </div>
                     <div className="flex items-center gap-1.5 text-muted-foreground rounded-2xl px-1 py-1.5">
+<<<<<<< HEAD
                         <button
                             onClick={() => changeLng("ro") }
                             className="hover:bg-accent hover:text-accent-foreground bg-secondary hover:scale-110 rounded-lg font-medium px-2 py-1.5 transition text-sm tracking-wide"
@@ -58,13 +65,30 @@ const Navbar = () => {
                             onClick={() => changeLng("en")}
                             className="hover:bg-accent hover:text-accent-foreground bg-secondary hover:scale-110 rounded-lg font-medium px-2 py-1.5 transition text-sm tracking-wide"
                         >
+=======
+                        <button onClick={()=>{
+                            changeLng('ro')
+                        }} className="hover:bg-accent hover:text-accent-foreground bg-secondary hover:scale-110 rounded-lg font-medium px-2 py-1.5 transition text-sm tracking-wide">
+                            RO
+                        </button>
+
+                        <button onClick={()=>{
+                            changeLng('en')
+                        }} className="hover:bg-accent hover:text-accent-foreground bg-secondary hover:scale-110 rounded-lg font-medium px-2 py-1.5 transition text-sm tracking-wide">
+>>>>>>> 902aedf96e58136f3bf41d7768c4752ef9b20c00
                             EN
                         </button>
                     </div>
                 </div>
 
+<<<<<<< HEAD
                 {/* CENTER — hidden on mobile */}
                 <div className="hidden md:flex items-center gap-1.5 text-muted-foreground bg-card rounded-2xl px-1.5 py-2">
+=======
+
+                {/* center section */}
+                <div className="flex items-center gap-1.5 text-muted-foreground bg-card rounded-2xl px-1.5 py-2">
+>>>>>>> 902aedf96e58136f3bf41d7768c4752ef9b20c00
                     <Link
                         to="/"
                         className="flex items-center gap-2 px-3 py-1.5 hover:text-foreground transition"
@@ -99,11 +123,21 @@ const Navbar = () => {
 
                 {/* RIGHT — desktop buttons hidden on mobile, hamburger visible only on mobile */}
                 <div className="flex items-center gap-4 flex-1 justify-end">
+<<<<<<< HEAD
                     <div className="hidden md:flex items-center gap-1.5 text-muted-foreground rounded-2xl px-2 py-1.5">
                         <button className=" hover:text-accent-foreground hover:bg-authbtn bg-secondary hover:scale-110 rounded-lg font-medium px-4 py-1.5 transition text-sm tracking-wide">
                             {t("navBar.leftDiv.sign-in")}
                         </button>
                         <button className=" hover:text-accent-foreground hover:bg-authbtn bg-secondary hover:scale-110 rounded-lg font-medium px-4 py-1.5 transition text-sm tracking-wide">
+=======
+
+                    {/* signin login */}
+                    <div className="flex items-center gap-1.5 text-muted-foreground rounded-2xl px-2 py-1.5">
+                        <button className="hover:bg-accent hover:text-accent-foreground bg-secondary hover:scale-110 rounded-lg font-medium px-4 py-1.5 transition text-sm tracking-wide">
+                            {t("navBar.leftDiv.sign-in")}
+                        </button>
+                        <button className="hover:bg-accent hover:text-accent-foreground bg-secondary hover:scale-110 rounded-lg font-medium px-4 py-1.5 transition text-sm tracking-wide">
+>>>>>>> 902aedf96e58136f3bf41d7768c4752ef9b20c00
                             {t("navBar.leftDiv.log-in")}
                         </button>
                     </div>

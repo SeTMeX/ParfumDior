@@ -14,6 +14,7 @@ const Footer = () => {
                     <div className="flex flex-col gap-10">
                         <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
                             {t("footer.left-sec.p-text")}
+                            {t("footer.left-sec.p-text")}
                         </p>
 
                         <div>
@@ -80,9 +81,11 @@ const Footer = () => {
                             <input
                                 type="email"
                                 placeholder={t("footer.newsletter.email")}
+                                placeholder={t("footer.newsletter.email")}
                                 className="flex-1 min-w-0 bg-transparent text-foreground placeholder:text-muted-foreground text-sm px-3 outline-none"
                             />
                             <button className="bg-primary hover:bg-primary/90 text-primary-foreground text-xs font-medium px-4 py-2 rounded-full shrink-0 transition">
+                                {t("footer.newsletter.subbtn")}
                                 {t("footer.newsletter.subbtn")}
                             </button>
                         </div>

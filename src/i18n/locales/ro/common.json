@@ -1,8 +1,17 @@
 {
-    "hello": "Salut",
-    "homePage":{
-        "title": "Produse Luxoase"
-    },
+  "homePage": {
+    "title": "Produse Luxoase",
+    "span1": "O concentrație extraordinară de arome care combină",
+    "span2": "prospețimea condimentelor cu căldura lemnului.",
+    "button": "CUMPĂRĂ ACUM"
+  },
+  "flavors": {
+    "jasmine": "Iasomie",
+    "rose": "Trandafir",
+    "vanilla": "Vanilie",
+    "melon": "Pepene",
+    "amber": "Chihlimbar"
+  },
     "navBar": {
         "centralDiv": {
             "features": "FUNCȚIONALITĂȚI",
