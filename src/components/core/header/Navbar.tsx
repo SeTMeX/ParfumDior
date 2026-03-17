@@ -67,6 +67,9 @@ const Navbar = () => {
                         </button>
                     </div>
                 </div>
+                
+
+                
 
 
     {/* CENTER — hidden on mobile */}
