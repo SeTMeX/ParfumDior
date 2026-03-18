@@ -1,11 +1,11 @@
 import Button from '../components/home/LandingButtons'
 import { useTranslation } from "react-i18next";
-
+import FragranceSection from '@/components/home/FragranceSection';
 const HomePage = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="relative min-h-screen w-full bg-center bg-cover flex flex-col lg:flex-row justify-between items-center font-playfair">
+    <div className="relative min-h-screen w-full bg-center bg-cover flex flex-col justify-between items-center font-playfair">
 
       <img
         className="absolute inset-0 w-full h-full object-cover z-[-1]"
@@ -51,7 +51,7 @@ const HomePage = () => {
         </div>
 
       </div>
-
+        <FragranceSection/>
     </div>
   );
 };
