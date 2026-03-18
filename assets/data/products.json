@@ -4,6 +4,7 @@
     "name": "Dior Sauvage Eau de Toilette",
     "price": "$120",
     "img": "public/photos/DiorSauvageEaudeToilette.png",
+    "color": "blue",
     "description": {
       "en": "A fresh and powerful fragrance for men, combining citrus, spicy, and woody notes. Perfect for daily wear and leaving a lasting impression.",
       "ro": "Un parfum proaspăt și puternic pentru bărbați, care combină note citrice, condimentate și lemnoase. Ideal pentru uz zilnic și pentru a lăsa o impresie de durată."
@@ -14,6 +15,7 @@
     "name": "Dior Sauvage Eau de Parfum",
     "price": "$140",
     "img": "public/photos/DiorSauvageEaudeParfum.png",
+     "color": "green",
     "description": {
       "en": "A deeper and warmer version of Sauvage with vanilla and spicy notes. More intense than the EDT and lasts longer, great for evening wear.",
       "ro": "O versiune mai profundă și mai caldă a Sauvage cu note de vanilie și condimente. Mai intensă decât EDT, rezistă mai mult, ideală pentru seară."
@@ -23,10 +25,11 @@
     "id": 3,
     "name": "Dior Sauvage Elixir",
     "price": "$180",
+     "color": "red",
     "img": "public/photos/DiorSauvageElixir.png",
     "description": {
-      "en": "The most powerful Sauvage version with rich spices, lavender, and woody notes. Very strong, long-lasting, and used mostly for special occasions.",
-      "ro": "Cea mai puternică versiune Sauvage cu condimente bogate, lavandă și note lemnoase. Foarte puternic, de lungă durată, folosit mai ales pentru ocazii speciale."
+      "en": "Sauvage with rich spices, lavender, and woody notes. Strong, long-lasting, perfect for special occasions.",
+"ro": "Sauvage cu condimente, lavandă și note lemnoase. Puternic, de lungă durată, ideal pentru ocazii speciale."
     }
   }
 ]
