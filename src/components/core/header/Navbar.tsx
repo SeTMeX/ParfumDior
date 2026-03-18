@@ -2,10 +2,15 @@ import { useEffect, useState } from "react";
 import { Heart, ShoppingCart, Home, Sun, Moon } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import Registration from "@/components/core/auth/Registration.tsx";
+import LogIn from "@/components/core/auth/LogIn.tsx";
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
-    const{i18n} = useTranslation()
+    const [showRegister, setShowRegister] = useState(false)
+    const [showLogin, setShowLogin] = useState(false)
+
+    const{i18n, t} = useTranslation()
 
     useEffect(() => {
         const handleScroll = () => {
@@ -38,20 +43,23 @@ const Navbar = () => {
                             <Moon size={20} />
                         </button>
                     </div>
-                </div>
-                <div className="bg-white flex gap-2">
-                    <button onClick={()=>{
-                        changeLng('ro')
-                    }}>
-                        ro
-                    </button>
+                    <div className="flex items-center gap-1.5 text-muted-foreground rounded-2xl px-1 py-1.5">
+                        <button onClick={()=>{
+                            changeLng('ro')
+                        }} className="hover:bg-accent hover:text-accent-foreground bg-secondary hover:scale-110 rounded-lg font-medium px-2 py-1.5 transition text-sm tracking-wide">
+                            RO
+                        </button>
 
-                    <button onClick={()=>{
-                        changeLng('en')
-                    }}>
-                        en
-                    </button>
+                        <button onClick={()=>{
+                            changeLng('en')
+                        }} className="hover:bg-accent hover:text-accent-foreground bg-secondary hover:scale-110 rounded-lg font-medium px-2 py-1.5 transition text-sm tracking-wide">
+                            EN
+                        </button>
+                    </div>
                 </div>
+                
+
+                
 
                 {/* center section */}
                 <div className="flex items-center gap-1.5 text-muted-foreground bg-card rounded-2xl px-1.5 py-2">
@@ -66,28 +74,28 @@ const Navbar = () => {
                         to="/features"
                         className="hover:bg-accent hover:text-accent-foreground bg-secondary rounded-md font-medium px-4 py-1.5 transition text-sm tracking-wide"
                     >
-                        FEATURES
+                        {t("navBar.centralDiv.features")}
                     </Link>
 
                     <Link
                         to="/solutions"
                         className="hover:bg-accent hover:text-accent-foreground bg-secondary rounded-md font-medium px-4 py-1.5 transition text-sm tracking-wide"
                     >
-                        SOLUTIONS
+                        {t("navBar.centralDiv.solutions")}
                     </Link>
 
                     <Link
                         to="/company"
                         className="hover:bg-accent hover:text-accent-foreground bg-secondary rounded-md font-medium px-4 py-1.5 transition text-sm tracking-wide"
                     >
-                        COMPANY
+                        {t("navBar.centralDiv.company")}
                     </Link>
 
                     <Link
                         to="/get-started"
                         className="hover:bg-accent hover:text-accent-foreground bg-secondary rounded-md font-medium px-4 py-1.5 transition text-sm tracking-wide"
                     >
-                        GET STARTED
+                        {t("navBar.centralDiv.get-started")}
                     </Link>
                 </div>
 
@@ -96,12 +104,12 @@ const Navbar = () => {
 
                     {/* signin login */}
                     <div className="flex items-center gap-1.5 text-muted-foreground rounded-2xl px-2 py-1.5">
-                        <button className="hover:bg-accent hover:text-accent-foreground bg-secondary hover:scale-110 rounded-lg font-medium px-4 py-1.5 transition text-sm tracking-wide">
-                            Sign In
-                        </button>
-                        <button className="hover:bg-accent hover:text-accent-foreground bg-secondary hover:scale-110 rounded-lg font-medium px-4 py-1.5 transition text-sm tracking-wide">
-                            Log In
-                        </button>
+                        <button className="hover:bg-accent hover:text-accent-foreground bg-secondary hover:scale-110 rounded-lg font-medium px-4 py-1.5 transition text-sm tracking-wide"
+                            onClick={() => { setShowRegister(true); }}>{t("navBar.leftDiv.sign-in")}</button>
+                        <button className="hover:bg-accent hover:text-accent-foreground bg-secondary hover:scale-110 rounded-lg font-medium px-4 py-1.5 transition text-sm tracking-wide"
+                            onClick={() => { 
+                                setShowLogin(true);
+                            }}>{t("navBar.leftDiv.log-in")}</button>
                     </div>
 
                     <button className="p-2 rounded-full hover:bg-accent transition text-muted-foreground">
@@ -120,6 +128,9 @@ const Navbar = () => {
                 </div>
 
             </div>
+
+            <LogIn show={showLogin} onClose={() => setShowLogin(false)}/>
+            <Registration show={showRegister} onClose={() => setShowRegister(false)}/>
         </nav>
     );
 };

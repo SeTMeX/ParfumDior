@@ -1,8 +1,5 @@
 {
     "hello": "Hello",
-    "homePage": {
-        "title": "Products Luxorious"
-    },
     "newArrivals": "New Arrivals",
     "allProducts": "All Products →",
     "allScents": "All Scents",
@@ -11,5 +8,55 @@
     "findElsewhere": "Find Elsewhere.",
     "signatureCollection": "Signature Collection",
     "highQualityFairPrice": "High Quality, Fair Price",
-    "sourceIngredientsText": "We source ingredients from the same houses luxury brands use to create exceptional fragrances."
+    "sourceIngredientsText": "We source ingredients from the same houses luxury brands use to create exceptional fragrances.",
+    "homePage": {
+        "title": "Luxury Products",
+        "span1": "An extraordinary concentration of aromas that combines",
+        "span2": "the freshness of spices with the warmth of wood.",
+        "button": "BUY NOW"
+    },
+    "flavors": {
+        "jasmine": "Jasmine",
+        "rose": "Rose",
+        "vanilla": "Vanilla",
+        "melon": "Melon",
+        "amber": "Amber"
+    },
+    "navBar": {
+        "centralDiv": {
+            "features": "FEATURES",
+            "solutions": "SOLUTIONS",
+            "company": "COMPANY",
+            "get-started": "GET STARTED"
+        },
+        "leftDiv": {
+            "sign-in": "Sign In",
+            "log-in": "Log In"
+        }
+    },
+    "footer": {
+        "left-sec": {
+            "p-text": "We are a premium fragrance brand crafting distinctive scents designed to elevate everyday moments."
+        },
+        "newsletter": {
+            "subtext1": "Subscribe to",
+            "subtext2": " get Our Newsletter",
+            "email": "Enter your email",
+            "subbtn": "Subscribe",
+            "adress": "ADRESS",
+            "phone": "PHONE"
+        },
+        "bottomsec": {
+            "rights": "All Rights Reserved",
+            "faq": "FAQ",
+            "terms": "Term of Service",
+            "policy": "Privacy Policy"
+        }
+    },
+    "SignUp": {
+        "create": "Create a free account with your email",
+        "name": "Full Name",
+        "password": "Password",
+        "alreadyHave": "Have an account?"
+    }
 }

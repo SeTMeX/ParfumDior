@@ -1,15 +1,62 @@
 {
-    "hello": "Salut",
-    "homePage": {
-        "title": "Produse Luxoase"
+  "hello": "Salut",
+  "homePage": {
+    "title": "Produse Luxoase",
+    "span1": "O concentrație extraordinară de arome care combină",
+    "span2": "prospețimea condimentelor cu căldura lemnului.",
+    "button": "CUMPĂRĂ ACUM"
+  },
+  "newArrivals": "Noutăți",
+  "allProducts": "Toate Produsele →",
+  "allScents": "Toate Aromele",
+  "descriptionText": "Parfum excepțional realizat cu ingrediente premium.",
+  "fragrancesYouWont": "Parfumuri pe care nu le",
+  "findElsewhere": "vei găsi în altă parte.",
+  "signatureCollection": "Colecție Semnătură",
+  "highQualityFairPrice": "Calitate Înaltă, Preț Corect",
+  "sourceIngredientsText": "Folosim ingrediente de la aceleași case ca brandurile de lux pentru a crea parfumuri excepționale.",
+  "flavors": {
+    "jasmine": "Iasomie",
+    "rose": "Trandafir",
+    "vanilla": "Vanilie",
+    "melon": "Pepene",
+    "amber": "Chihlimbar"
+  },
+  "navBar": {
+    "centralDiv": {
+      "features": "FUNCȚIONALITĂȚI",
+      "solutions": "SOLUȚII",
+      "company": "COMPANIE",
+      "get-started": "ÎNCEPE"
     },
-    "newArrivals": "Noutăți",
-    "allProducts": "Toate Produsele →",
-    "allScents": "Toate Aromele",
-    "descriptionText": "Parfum excepțional realizat cu ingrediente premium.",
-    "fragrancesYouWont": "Parfumuri pe care nu le",
-    "findElsewhere": "vei găsi în altă parte.",
-    "signatureCollection": "Colecție Semnătură",
-    "highQualityFairPrice": "Calitate Înaltă, Preț Corect",
-    "sourceIngredientsText": "Folosim ingrediente de la aceleași case ca brandurile de lux pentru a crea parfumuri excepționale."
+    "leftDiv": {
+      "sign-in": "Înregistrare",
+      "log-in": "Autentificare"
+    }
+  },
+  "footer": {
+    "left-sec": {
+      "p-text": "Suntem un brand premium de parfumuri care creează arome distinctive, concepute pentru a îmbunătăți momentele de zi cu zi."
+    },
+    "newsletter": {
+      "subtext1": "Abonează-te pentru",
+      "subtext2": " a primi newsletterul nostru",
+      "email": "Introdu emailul tău",
+      "subbtn": "Abonează-te",
+      "adress": "ADRESA",
+      "phone": "TELEFON"
+    },
+    "bottomsec": {
+      "rights": "Toate drepturile rezervate",
+      "faq": "Întrebări frecvente",
+      "terms": "Termeni de utilizare",
+      "policy": "Politica de confidențialitate"
+    }
+  },
+  "SignUp": {
+    "create": "Creează un cont gratuit cu adresa ta de e-mail",
+    "name": "Nume Complet",
+    "password": "Parola",
+    "alreadyHave": "Ai deja un cont?"
+  }
 }

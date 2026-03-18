@@ -1,4 +1,10 @@
+import {useTranslation} from "react-i18next";
+
+
 const Footer = () => {
+
+    const{t} = useTranslation()
+
     return (
         <footer className="bg-card text-foreground">
             <div className="max-w-7xl mx-auto px-8 pt-16 pb-8">
@@ -7,7 +13,7 @@ const Footer = () => {
                     {/* left section */}
                     <div className="flex flex-col gap-12">
                         <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
-                            We are a premium fragrance brand crafting distinctive scents designed to elevate everyday moments.
+                            {t("footer.left-sec.p-text")}
                         </p>
 
                         <div>
@@ -37,7 +43,7 @@ const Footer = () => {
                     <div className="flex flex-col gap-8">
                         <div>
                             <p className="text-xs font-semibold tracking-widest mb-3 text-muted-foreground">
-                                ADDRESS
+                                {t("footer.newsletter.adress")}
                             </p>
                             <p className="text-sm leading-relaxed text-muted-foreground">
                                 1901 Thornridge Cir.<br />
@@ -47,7 +53,7 @@ const Footer = () => {
 
                         <div>
                             <p className="text-xs font-semibold tracking-widest mb-3 text-muted-foreground">
-                                PHONE
+                                {t("footer.newsletter.phone")}
                             </p>
                             <p className="text-sm text-muted-foreground">
                                 [+373] 812381283
@@ -67,18 +73,18 @@ const Footer = () => {
                     {/* newsletter */}
                     <div>
                         <p className="text-3xl font-semibold leading-tight mb-8">
-                            Subscribe to<br />get Our Newsletter
+                            {t("footer.newsletter.subtext1")}<br />{t("footer.newsletter.subtext2")}
                         </p>
 
                         <div className="flex items-center bg-muted rounded-full p-1.5">
                             <input
                                 type="email"
-                                placeholder="Enter your email"
+                                placeholder={t("footer.newsletter.email")}
                                 className="flex-1 min-w-0 bg-transparent text-foreground placeholder:text-muted-foreground text-sm px-3 outline-none"
                             />
 
                             <button className="bg-primary hover:bg-primary/90 text-primary-foreground text-xs font-medium px-4 py-2 rounded-full shrink-0 transition">
-                                Subscribe
+                                {t("footer.newsletter.subbtn")}
                             </button>
                         </div>
                     </div>
@@ -87,13 +93,13 @@ const Footer = () => {
                 {/* bottom bar */}
                 <div className="border-t border-border pt-6 flex items-center justify-between">
                     <p className="text-muted-foreground text-sm">
-                        © Copyright 2026, All Rights Reserved
+                        © Copyright 2026, {t("footer.bottomsec.rights")}
                     </p>
 
                     <div className="flex items-center gap-6 text-muted-foreground text-sm">
-                        <a href="#" className="hover:text-foreground transition">FAQ</a>
-                        <a href="#" className="hover:text-foreground transition">Term of Service</a>
-                        <a href="#" className="hover:text-foreground transition">Privacy Policy</a>
+                        <a href="#" className="hover:text-foreground transition">{t("footer.bottomsec.faq")}</a>
+                        <a href="#" className="hover:text-foreground transition">{t("footer.bottomsec.terms")}</a>
+                        <a href="#" className="hover:text-foreground transition">{t("footer.bottomsec.policy")}</a>
                     </div>
                 </div>
 
