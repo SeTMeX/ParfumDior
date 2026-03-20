@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { User, ShoppingCart, Home, Sun, Moon, Menu, X } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import NavbarMobileMenu from "@/components/core/header/NavbarMobileMenu.tsx";
 import Registration from "@/components/core/auth/Registration.tsx";
@@ -23,7 +23,8 @@ const Navbar = () => {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    // Close menu on route change
+    const location = useLocation();
+
     useEffect(() => {
         setMenuOpen(false);
     }, [location]);
@@ -157,7 +158,10 @@ const Navbar = () => {
                 </div>
 
             </div>
-            {menuOpen && <NavbarMobileMenu onChangeLng={changeLng} cartCount={1} />}
+            {menuOpen && <NavbarMobileMenu onChangeLng={changeLng}
+                                           onShowRegister={() => setShowRegister(true)}
+                                           onShowLogin={() => setShowLogin(true)}
+                                           cartCount={1} />}
 
             <LogIn show={showLogin} onClose={() => setShowLogin(false)}/>
             <Registration show={showRegister} onClose={() => setShowRegister(false)}/>

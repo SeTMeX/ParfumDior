@@ -5,9 +5,12 @@ import { useTranslation } from "react-i18next";
 interface NavbarMobileMenuProps {
     onChangeLng: (lng: string) => void;
     cartCount?: number;
+    onShowRegister: () => void;
+    onShowLogin: () => void;
 }
 
-const NavbarMobileMenu = ({ onChangeLng}: NavbarMobileMenuProps) => {
+
+const NavbarMobileMenu = ({ onChangeLng, onShowRegister, onShowLogin}: NavbarMobileMenuProps) => {
     const { t } = useTranslation();
 
     return (
@@ -58,10 +61,12 @@ const NavbarMobileMenu = ({ onChangeLng}: NavbarMobileMenuProps) => {
 
             {/* Auth buttons */}
             <div className="flex gap-2 border-t border-border pt-2">
-                <button className="flex-1 bg-secondary hover:text-accent-foreground  hover:bg-authbtn rounded-lg font-medium py-2 transition text-sm tracking-wide">
+                <button className="flex-1 bg-secondary hover:text-accent-foreground  hover:bg-authbtn rounded-lg font-medium py-2 transition text-sm tracking-wide"
+                        onClick={onShowRegister}>
                     {t("navBar.leftDiv.sign-in")}
                 </button>
-                <button className="flex-1 bg-secondary hover:text-accent-foreground hover:bg-authbtn rounded-lg font-medium py-2 transition text-sm tracking-wide">
+                <button className="flex-1 bg-secondary hover:text-accent-foreground hover:bg-authbtn rounded-lg font-medium py-2 transition text-sm tracking-wide"
+                        onClick={onShowLogin}>
                     {t("navBar.leftDiv.log-in")}
                 </button>
             </div>
