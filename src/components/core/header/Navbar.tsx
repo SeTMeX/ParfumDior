@@ -111,7 +111,7 @@ const Navbar = () => {
                 <div className="flex items-center gap-4 flex-1 justify-end">
 
                     {/* signin login */}
-                    <div className="flex items-center gap-1.5 text-muted-foreground rounded-2xl px-2 py-1.5">
+                    <div className="hidden md:flex items-center gap-1.5 text-muted-foreground rounded-2xl px-2 py-1.5">
                         <button className="hover:bg-accent hover:text-accent-foreground bg-secondary hover:scale-110 rounded-lg font-medium px-4 py-1.5 transition text-sm tracking-wide"
                             onClick={() => { setShowRegister(true); }}>{t("navBar.leftDiv.sign-in")}</button>
                         <button className="hover:bg-accent hover:text-accent-foreground bg-secondary hover:scale-110 rounded-lg font-medium px-4 py-1.5 transition text-sm tracking-wide"
