@@ -10,6 +10,7 @@ interface RoutesI {
     element: ReactNode,
     hideNavbar?:boolean,
     hideFooter?:boolean
+    isAuth?:boolean
 }
 
  export const  routes:RoutesI[] = [
@@ -17,20 +18,23 @@ interface RoutesI {
         name:'Home',
         title:'MainPage',
         path:'/',
-        element: <HomePage/>
+        element: <HomePage/>,
+        isAuth:false
     },
     {
         name:'AboutUs',
         title:'Secondpage',
         path:'/about',
         element:<AboutUsPage/>,
-        hideFooter:true
+        hideFooter:true,
+        isAuth:true
     },
     {
         name:'Team',
         title:'Teampage',
         path:'/team',
         element:<TeamPage/>, 
-        hideNavbar:true 
+        hideNavbar:true,
+        isAuth:true
     }
  ]

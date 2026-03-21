@@ -3,6 +3,7 @@ import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { useState } from "react";
 import { Register } from "@/api/request";
 import { toast } from "sonner";
+import {PHONE_REGEX} from "@/data/const.ts";
 
 interface RegisterFormProps {
 show: boolean;
@@ -17,8 +18,39 @@ const [phoneNumber, setPhoneNumber] = useState('')
 const [email, setEmail] = useState('')
 const [password, setPassword] = useState('')
 
+    const validateData =()=>{
+      if(firstName.length ===0){
+          toast.error('enter first name')
+          return false
+      }
+
+      if(lastName.length ===0){
+          toast.error('enter last name')
+          return false
+      }
+
+      if (phoneNumber.length ===0 || !PHONE_REGEX.test(phoneNumber)){
+          toast.error('enter phone number')
+          return false
+      }
+
+      if (email.length ===0 || !email.includes("@")){
+          toast.error('email invalid')
+          return false
+      }
+      if (password.length < 6 || password.length >16){
+          toast.error('password invalid')
+          return false
+      }
+
+      return true
+    }
 const onSubmit = () =>{
-  const payload: RegisterDto = {
+  const isValid = validateData()
+    if(!isValid){
+        return ;
+    }
+      const payload: RegisterDto = {
     firstName: firstName,
     lastName,
     phoneNumber,
@@ -145,7 +177,8 @@ className="w-full rounded-md border border-gray-700 bg-gray-900 px-4 py-3 text-w
 <button
 onClick={onSubmit}
 type="submit"
-className="mt-6 w-full bg-blue-600 hover:bg-blue-500 active:bg-blue-700 transition-colors py-3 rounded-md font-semibold text-white"
+// disabled={!validateData()}
+className="mt-6 w-full bg-blue-600 disabled:opacity-70  disabled:cursor-not-allowed hover:bg-blue-500 active:bg-blue-700 transition-colors py-3 rounded-md font-semibold text-white"
 >
 Create Account
 </button>
