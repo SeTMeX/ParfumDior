@@ -9,10 +9,11 @@ import LogIn from "@/components/core/auth/LogIn.tsx";
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
-    const { i18n, t } = useTranslation();
+
     const [showRegister, setShowRegister] = useState(false)
     const [showLogin, setShowLogin] = useState(false)
 
+    const{i18n, t} = useTranslation()
 
     useEffect(() => {
         const handleScroll = () => {
@@ -113,22 +114,13 @@ const Navbar = () => {
                 {/* RIGHT — desktop buttons hidden on mobile, hamburger visible only on mobile */}
                 <div className="flex items-center gap-4 flex-1 justify-end">
 
-                    {/* signin login */}
-                    <div className="hidden md:flex items-center gap-1.5 text-muted-foreground rounded-2xl px-2 py-1.5">
+                {/* signin login */}
+                    <div className="flex items-center gap-1.5 text-muted-foreground rounded-2xl px-2 py-1.5">
                         <button className="hover:bg-accent hover:text-accent-foreground bg-secondary hover:scale-110 rounded-lg font-medium px-4 py-1.5 transition text-sm tracking-wide"
                             onClick={() => { setShowRegister(true); }}>{t("navBar.leftDiv.sign-in")}</button>
                         <button className="hover:bg-accent hover:text-accent-foreground bg-secondary hover:scale-110 rounded-lg font-medium px-4 py-1.5 transition text-sm tracking-wide"
-                            onClick={() => {
-                                setShowLogin(true);
-                            }}>{t("navBar.leftDiv.log-in")}</button>
+                            onClick={() => { setShowLogin(true); }}>{t("navBar.leftDiv.log-in")}</button>
                     </div> 
-
-                    {/* <div className="flex items-center gap-1.5 text-muted-foreground rounded-2xl px-2 py-1.5">
-                        <button className="hover:bg-accent hover:text-accent-foreground bg-secondary hover:scale-110 rounded-lg font-medium px-4 py-1.5 transition text-sm tracking-wide"
-                                onClick={() => { setAuthView("register"); setShowAuth(true) }}>{t("navBar.leftDiv.sign-in")}</button>
-                        <button className="hover:bg-accent hover:text-accent-foreground bg-secondary hover:scale-110 rounded-lg font-medium px-4 py-1.5 transition text-sm tracking-wide"
-                                onClick={() => { setAuthView("login"); setShowAuth(true) }}>{t("navBar.leftDiv.log-in")}</button>
-                    </div> */}
 
                     <button className="hidden md:block p-2 rounded-full hover:bg-accent transition text-muted-foreground">
                         <User size={25} />
@@ -165,19 +157,28 @@ const Navbar = () => {
                         </button>
                     </div>
                 </div>
-
             </div>
             {menuOpen && <NavbarMobileMenu onChangeLng={changeLng}
                                            onShowRegister={() => setShowRegister(true)}
                                            onShowLogin={() => setShowLogin(true)}
                                            cartCount={1} />}
 
-            {/* <LogIn show={showLogin} onClose={() => setShowLogin(false)}/>
-            <Registration show={showRegister} onClose={() => setShowRegister(false)}/> */}
+            <LogIn show={showLogin} 
+            onClose={()=>setShowLogin(false)} 
+            onSwitch={()=> {
+                setShowLogin(false) 
+                setShowRegister(true)}
+            }/>
 
-            {/* <AuthDialog show={showAuth} onClose={() => setShowAuth(false)} defaultView={authView} /> */}
+            <Registration show={showRegister} 
+                onClose={()=> setShowRegister(false)} 
+                onSwitch={ ()=> {
+                    setShowRegister(false)
+                    setShowLogin(true)
+                }}
+            />
         </nav>
-    );
+    )
 };
 
 export default Navbar;

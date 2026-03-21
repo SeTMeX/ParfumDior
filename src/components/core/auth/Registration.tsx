@@ -21,19 +21,7 @@ const RegisterForm = ({ show, onClose, onSwitch}: RegisterFormProps) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const validateData = () => {
-  if (!firstName.trim()) {
-    toast.error("Introdu numele");
-    return false;
-  }
-
-  return true;
-};
-
   const onSubmit = () => {
-    if (!validateData()) {
-      return;
-    }
     const payload: RegisterDto = {
       firstName: firstName,
       lastName,

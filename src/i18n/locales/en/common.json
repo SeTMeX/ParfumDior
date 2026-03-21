@@ -30,7 +30,7 @@
             "get-started": "GET STARTED"
         },
         "leftDiv": {
-            "sign-in": "Sign In",
+            "sign-in": "Sign Up",
             "log-in": "Log In"
         }
     },
@@ -53,18 +53,34 @@
             "policy": "Privacy Policy"
         }
     },
-    "SignUp": {
-    "title": "Sign Up",
-    "subtitle": "Create your free account",
-    "fullName": "Full Name",
-    "fullNamePlaceholder": "Enter your full name",
-    "email": "Email",
-    "emailPlaceholder": "Enter your email",
-    "password": "Password",
-    "passwordPlaceholder": "Create a password",
-    "createAccount": "Create Account",
-    "orSignUpWith": "or sign up with",
-    "alreadyHaveAccount": "Already have an account?",
-    "loginHere": "Login here"
-}
+        "signUp": {
+            "title": "Sign Up",
+            "subtitle": "Create your free account",
+            "name": "Name",
+            "namePlaceholder": "Enter your name",
+            "surname": "Surname", 
+            "surnamePlaceholder": "Enter your surname",
+            "phoneNr": "Phone Number",
+            "enterPhoneNr": "Enter your phone number",
+            "email": "Email",
+            "emailPlaceholder": "Enter your email",
+            "password": "Password",
+            "passwordPlaceholder": "Create a password",
+            "createAccount": "Create Account",
+            "orSignUpWith": "or sign up with",
+            "alreadyHaveAccount": "Already have an account?  "
+    },
+    
+        "logIn": {
+            "title": "Log In",
+            "subtitle": "Welcome backt",
+            "email": "Email",
+            "emailPlaceholder": "Enter your email",
+            "password": "Password",
+            "passwordPlaceholder": "Create a password",
+            "forgot": "Forgot password?",
+            "login": "Log in",
+            "orContinueWith": "or continue up with",
+            "notAnAccount": "Don't have an account?  "
+        }
 }

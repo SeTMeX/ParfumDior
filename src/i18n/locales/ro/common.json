@@ -70,24 +70,35 @@
             "faq": "Întrebări frecvente",
             "terms": "Termeni de utilizare",
             "policy": "Politica de confidențialitate"
-        },
-    "SignUp": {
-        "create": "Creează un cont gratuit cu adresa ta de e-mail",
-    "name": "Nume Complet",
-    "password": "Parola",
-    "alreadyHave": "Ai deja un cont?",
-    "title": "Înregistrare",
-    "subtitle": "Creează-ți contul gratuit",
-    "fullName": "Nume Complet",
-    "fullNamePlaceholder": "Introdu numele tău complet",
-    "email": "Email",
-    "emailPlaceholder": "Introdu adresa de email",
-    "password": "Parolă",
-    "passwordPlaceholder": "Creează o parolă",
-    "createAccount": "Creează Cont",
-    "orSignUpWith": "sau înregistrează-te cu",
-    "alreadyHaveAccount": "Ai deja un cont?",
-    "loginHere": "Autentifică-te aici"
+        }
+    },
+    "signUp": {
+            "title": "Înregistrare",
+            "subtitle": "Creează-ți contul gratuit",
+            "name": "Nume",
+            "namePlaceholder": "Introduceți numele",
+            "surname": "Prenume", 
+            "surnamePlaceholder": "Introduceți prenumele",
+            "email": "Email",
+            "phoneNr": "Număr de telefon",
+            "enterPhoneNr": "Introduceți numărul de telefon",
+            "emailPlaceholder": "Introduceți emailul",
+            "password": "Parolă",
+            "passwordPlaceholder": "Creați o parolă",
+            "createAccount": "Creează cont",
+            "orSignUpWith": "sau înregistrați-vă cu",
+            "alreadyHaveAccount": "Ai deja un cont?  "
+    },
+    "logIn": {
+        "title": "Autentificare",
+        "subtitle": "Bun venit înapoi",
+        "email": "Email",
+        "emailPlaceholder": "Introduceți emailul",
+        "password": "Parolă",
+        "passwordPlaceholder": "Introduceți parola",
+        "forgot": "Ați uitat parola?",
+        "login": "Autentificare",
+        "orContinueWith": "sau continuați cu",
+        "notAnAccount": "Nu aveți un cont?  "
     }
-}
 }
