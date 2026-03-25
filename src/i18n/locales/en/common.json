@@ -1,17 +1,27 @@
 {
-  "homePage": {
-    "title": "Luxury Products",
-    "span1": "An extraordinary concentration of aromas that combines",
-    "span2": "the freshness of spices with the warmth of wood.",
-    "button": "BUY NOW"
-  },
-  "flavors": {
-    "jasmine": "Jasmine",
-    "rose": "Rose",
-    "vanilla": "Vanilla",
-    "melon": "Melon",
-    "amber": "Amber"
-  },
+    "hello": "Hello",
+    "newArrivals": "New Arrivals",
+    "allProducts": "All Products →",
+    "allScents": "All Scents",
+    "descriptionText": "Exceptional fragrance crafted with premium ingredients.",
+    "fragrancesYouWont": "Fragrances You Won't",
+    "findElsewhere": "Find Elsewhere.",
+    "signatureCollection": "Signature Collection",
+    "highQualityFairPrice": "High Quality, Fair Price",
+    "sourceIngredientsText": "We source ingredients from the same houses luxury brands use to create exceptional fragrances.",
+    "homePage": {
+        "title": "Luxury Products",
+        "span1": "An extraordinary concentration of aromas that combines",
+        "span2": "the freshness of spices with the warmth of wood.",
+        "button": "BUY NOW"
+    },
+    "flavors": {
+        "jasmine": "Jasmine",
+        "rose": "Rose",
+        "vanilla": "Vanilla",
+        "melon": "Melon",
+        "amber": "Amber"
+    },
     "navBar": {
         "centralDiv": {
             "features": "FEATURES",
