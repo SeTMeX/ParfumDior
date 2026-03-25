@@ -15,7 +15,7 @@ const HomePage = () => {
       />
 
       {/* LEFT SECTION */}
-      <div className="flex flex-col text-center lg:text-left w-full lg:w-1/2 px-6 md:px-12 lg:px-20 py-10">
+      <div className="flex flex-col text-center lg:text-left w-full lg:w-1/2 px-6 md:px-12 lg:px-20 py-46">
 
         <span className="font-playpen text-4xl md:text-6xl lg:text-8xl text-gray-300 pb-4">
           {t("homePage.title")}
