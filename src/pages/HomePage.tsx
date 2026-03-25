@@ -2,10 +2,16 @@ import Button from '../components/home/LandingButtons'
 import { useTranslation } from "react-i18next";
 import FragranceSection from '@/components/home/FragranceSection';
 const HomePage = () => {
+
   const { t } = useTranslation();
+
+
 
   return (
     <div className="relative min-h-screen w-full bg-center bg-cover flex flex-col justify-between items-center font-playfair">
+
+      
+
 
       <img
         className="absolute inset-0 w-full h-full object-cover z-[-1]"
@@ -29,7 +35,7 @@ const HomePage = () => {
           <Button text="BUY NOW" className="h-12 w-32 md:h-14 md:w-36" />
 
           <span className="text-white py-3 text-lg md:text-2xl">
-            480.
+            $480.
             <span className="text-gray-600">00</span>
           </span>
         </div>
@@ -51,7 +57,7 @@ const HomePage = () => {
         </div>
 
       </div>
-        <FragranceSection/>
+      <FragranceSection />
     </div>
   );
 };

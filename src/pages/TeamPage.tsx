@@ -1,7 +1,11 @@
-const TeamPage  = () => {
-    return(
+const TeamPage = () => {
+
+    
+
+    return (
         <div>
-            team page
+
+            TEAM PAGE
         </div>
     )
 }

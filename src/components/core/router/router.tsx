@@ -27,7 +27,7 @@ interface RoutesI {
         path:'/about',
         element:<AboutUsPage/>,
         hideFooter:true,
-        isAuth:true
+        isAuth:false
     },
     {
         name:'Team',
@@ -35,6 +35,6 @@ interface RoutesI {
         path:'/team',
         element:<TeamPage/>, 
         hideNavbar:true,
-        isAuth:true
+        isAuth:false
     }
  ]
