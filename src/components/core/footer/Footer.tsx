@@ -4,7 +4,7 @@ const Footer = () => {
   const { t } = useTranslation();
 
   return (
-    <footer className="bg-card text-foreground">
+    <footer className="bg-card text-foreground border-t border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 pb-8">
         {/* Main grid: stacks on mobile, 2 cols on md, 3 cols on lg */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-12 sm:mb-16">

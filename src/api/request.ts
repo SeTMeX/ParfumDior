@@ -17,7 +17,7 @@ export async function UserProfile(){
     return response.data;
 }
 
-export async function UpdateUserProfile(data: Partial<UserDto>){
+export async function UpdateUserProfile(data: UpdateUserDto){
     const response = await api.patch<UpdateUserDto>('/user/profile', data)
     return response.data;
 }

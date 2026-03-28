@@ -63,7 +63,7 @@ const RegisterForm = ({ show, onClose }: RegisterFormProps) => {
       toast.success("Va-ti inregistrat cu success")
       onClose()
     }).catch((error) => {
-      toast.error(error.response.data.message)
+      toast.error(error?.response?.data?.message)
     })
   }
 

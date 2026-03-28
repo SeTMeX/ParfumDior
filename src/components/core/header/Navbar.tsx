@@ -41,12 +41,13 @@ const Navbar = () => {
     i18n.changeLanguage(lng);
   };
 
+  const isAuth = localStorage.getItem("accessToken");
   return (
     <nav
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         scrolled || menuOpen
           ? "backdrop-blur-md bg-background/80 border-b border-border shadow-lg"
-          : "bg-transparent"
+          : "bg-background border-b border-border shadow-md"
       }`}
     >
       <div className="max-w-7xl mx-auto px-8 h-16 flex items-center justify-between text-foreground">
@@ -81,73 +82,42 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* CENTER — hidden on mobile */}
-        <div className="hidden md:flex items-center gap-1.5 text-muted-foreground bg-card rounded-2xl px-1.5 py-2">
-          <Link
-            to="/"
-            className="flex items-center gap-2 px-3 py-1.5 hover:text-foreground transition"
-          >
-            <Home size={20} />
-          </Link>
-
-          <Link
-            to="/features"
-            className="hover:bg-accent hover:text-accent-foreground bg-secondary rounded-md font-medium px-4 py-1.5 transition text-sm tracking-wide"
-          >
-            {t("navBar.centralDiv.features")}
-          </Link>
-
-          <Link
-            to="/solutions"
-            className="hover:bg-accent hover:text-accent-foreground bg-secondary rounded-md font-medium px-4 py-1.5 transition text-sm tracking-wide"
-          >
-            {t("navBar.centralDiv.solutions")}
-          </Link>
-
-          <Link
-            to="/company"
-            className="hover:bg-accent hover:text-accent-foreground bg-secondary rounded-md font-medium px-4 py-1.5 transition text-sm tracking-wide"
-          >
-            {t("navBar.centralDiv.company")}
-          </Link>
-
-          <Link
-            to="/get-started"
-            className="hover:bg-accent hover:text-accent-foreground bg-secondary rounded-md font-medium px-4 py-1.5 transition text-sm tracking-wide"
-          >
-            {t("navBar.centralDiv.get-started")}
-          </Link>
-        </div>
-
         {/* RIGHT — desktop buttons hidden on mobile, hamburger visible only on mobile */}
         <div className="flex items-center gap-4 flex-1 justify-end">
           {/* signin login */}
-          <div className="hidden md:flex items-center gap-1.5 text-muted-foreground rounded-2xl px-2 py-1.5">
-            <button
-              className="hover:bg-accent hover:text-accent-foreground bg-secondary hover:scale-110 rounded-lg font-medium px-4 py-1.5 transition text-sm tracking-wide"
-              onClick={() => {
-                setShowRegister(true);
-              }}
-            >
-              {t("navBar.leftDiv.sign-in")}
-            </button>
-            <button
-              className="hover:bg-accent hover:text-accent-foreground bg-secondary hover:scale-110 rounded-lg font-medium px-4 py-1.5 transition text-sm tracking-wide"
-              onClick={() => {
-                setShowLogin(true);
-              }}
-            >
-              {t("navBar.leftDiv.log-in")}
-            </button>
-          </div>
 
-          <button className="hidden md:block p-2 rounded-full hover:bg-accent transition text-muted-foreground">
-            <User size={25} />
-          </button>
+          {isAuth ? (
+            <div className="flex gap-2 items-center">
+              <Link to="/user">
+                <button className="hidden md:block p-2 rounded-full hover:bg-accent transition text-muted-foreground">
+                  <User size={25} />
+                </button>
+              </Link>
 
-          <button className="hidden md:block p-2 rounded-full hover:bg-accent transition text-muted-foreground">
-            <Heart size={20} />
-          </button>
+              <button className="hidden md:block p-2 rounded-full hover:bg-accent transition text-muted-foreground">
+                <Heart size={20} />
+              </button>
+            </div>
+          ) : (
+            <div className="hidden md:flex items-center gap-1.5 text-muted-foreground rounded-2xl px-2 py-1.5">
+              <button
+                className="hover:bg-accent hover:text-accent-foreground bg-secondary hover:scale-110 rounded-lg font-medium px-4 py-1.5 transition text-sm tracking-wide"
+                onClick={() => {
+                  setShowRegister(true);
+                }}
+              >
+                {t("navBar.leftDiv.sign-in")}
+              </button>
+              <button
+                className="hover:bg-accent hover:text-accent-foreground bg-secondary hover:scale-110 rounded-lg font-medium px-4 py-1.5 transition text-sm tracking-wide"
+                onClick={() => {
+                  setShowLogin(true);
+                }}
+              >
+                {t("navBar.leftDiv.log-in")}
+              </button>
+            </div>
+          )}
 
           <div className="hidden md:block relative">
             <button className="p-2 rounded-full hover:bg-accent transition text-muted-foreground">

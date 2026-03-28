@@ -43,5 +43,6 @@ interface RoutesI {
         title: 'Userpage',
         path: '/user',
         element: <UserPage/>,
+        isAuth:true
     }
  ]

@@ -3,17 +3,44 @@ import {
   DialogContent,
   DialogTitle,
 } from "@/components/ui/dialog"
+import { useState } from "react";
+import { toast } from 'sonner'
+import { Login } from "@/api/request"; 
 
 interface LogInFormProps {
   show: boolean;
   onClose: () => void;
 }
 const LogInForm = ({ show, onClose }: LogInFormProps) => {
-  // const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
-  //   console.log("Form submitted");
-  // };
 
+  const [emailInput, setEmailInput] = useState('')
+  const [passwordInput, setPasswordInput] = useState('')
+  
+  const submit = () => {
+    if (!emailInput) {
+      toast.error("email-ul este obligatoriu")
+      return
+    }
+    if (!passwordInput) {
+      toast.error("parola este obligatorie")
+      return
+    }
+
+    const payload = {
+      email: emailInput,
+      password: passwordInput
+    }
+
+    Login(payload).then((response) => {
+      localStorage.setItem('accessToken', response.accessToken)
+      localStorage.setItem('refreshToken', response.refreshToken)
+      toast.success("Va-ti inregistrat cu success")
+      onClose()
+    }).catch((error) => {
+      toast.error(error?.response?.data?.message)
+    })
+  }
+  
   return (
 
 
@@ -26,18 +53,21 @@ const LogInForm = ({ show, onClose }: LogInFormProps) => {
           <div className="mt-6">
             <div className="mt-4">
               <label
-                htmlFor="username"
+                htmlFor="email"
                 className="block text-sm text-gray-400 mb-1"
               >
-                Username
+                email
               </label>
               <input
                 type="text"
-                id="username"
-                placeholder="Enter username"
-                autoComplete="username"
+                id="email"
+                placeholder="Enter email"
+                autoComplete="email"
                 className="w-full rounded-md border border-gray-700 bg-gray-900 px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-              />
+                value = {emailInput}
+                onChange={(e) => setEmailInput(e.target.value)}
+
+             />
             </div>
 
             <div className="mt-4">
@@ -53,7 +83,9 @@ const LogInForm = ({ show, onClose }: LogInFormProps) => {
                 placeholder="Enter password"
                 autoComplete="current-password"
                 className="w-full rounded-md border border-gray-700 bg-gray-900 px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-              />
+                value = {passwordInput}
+                onChange={(e) => setPasswordInput(e.target.value)}
+             />
 
               <div className="flex justify-end mt-2">
                 <a href="#" className="text-xs text-gray-300 hover:text-white hover:underline">
@@ -65,7 +97,8 @@ const LogInForm = ({ show, onClose }: LogInFormProps) => {
             <button
               type="submit"
               className="mt-6 w-full bg-blue-600 hover:bg-blue-500 active:bg-blue-700 transition-colors py-3 rounded-md font-semibold text-white"
-            >
+              onClick={submit}
+           >
               Sign in
             </button>
           </div>
