@@ -30,6 +30,9 @@ const HomePage = () => {
         <span className="text-white text-sm md:text-base">
           {t("homePage.span1")}
         </span>
+        <span className="text-white text-sm md:text-base">
+          {t("homePage.span2")}
+        </span>
 
         <div className="flex flex-row justify-center lg:justify-start mt-8 gap-5">
           <Button text="BUY NOW" className="h-12 w-32 md:h-14 md:w-36" />
