@@ -2,7 +2,7 @@
   "hello": "Hello",
   "newArrivals": "New Arrivals",
   "allProducts": "All Products →",
-  "allScents": "All Scents",
+  "allScents": "Fragrance Notes",
   "descriptionText": "Exceptional fragrance crafted with premium ingredients.",
   "fragrancesYouWont": "Fragrances You Won't",
   "findElsewhere": "Find Elsewhere.",
@@ -46,7 +46,7 @@
       "subtext2": " get Our Newsletter",
       "email": "Enter your email",
       "subbtn": "Subscribe",
-      "adress": "ADRESS",
+      "adress": "ADDRESS",
       "phone": "PHONE"
     },
     "bottomsec": {
@@ -62,7 +62,6 @@
     "password": "Password",
     "alreadyHave": "Have an account?"
   },
-
   "UserProfile": {
     "profile": "Profile",
     "order": "Order History",
