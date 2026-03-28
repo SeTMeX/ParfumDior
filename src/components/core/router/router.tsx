@@ -1,6 +1,7 @@
 import AboutUsPage from "@/pages/AboutUsPage";
 import HomePage from "@/pages/HomePage";
 import TeamPage from "@/pages/TeamPage";
+import UserPage from "@/pages/UserPage";
 import type { ReactNode } from "react";
 
 interface RoutesI {
@@ -36,5 +37,11 @@ interface RoutesI {
         element:<TeamPage/>, 
         hideNavbar:true,
         isAuth:false
+    },
+    {
+        name: 'User',
+        title: 'Userpage',
+        path: '/user',
+        element: <UserPage/>,
     }
  ]
