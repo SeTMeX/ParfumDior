@@ -58,5 +58,24 @@
     "name": "Nume Complet",
     "password": "Parola",
     "alreadyHave": "Ai deja un cont?"
-  }
+  },
+
+  "UserProfile": {
+    "profile": "Profil",
+    "order": "Istoricul Comenzilor",
+    "wishlist": "Lista de Dorințe",
+    "wallet": "Portofelul Meu",
+    "logOut": "Deconectare",
+    "delete": "Șterge Contul",
+    "personalData": "Date Personale",
+    "orders": "Comenzi",
+    "sales": "Vânzări",
+    "personalInfo": "Informații Personale",
+    "fullName": "Nume Complet",
+    "phone": "Telefon",
+    "member": "Abonament",
+    "email": "Email",
+    "memberSince": "Membru din",
+    "id": "ID Client"
+}
 }

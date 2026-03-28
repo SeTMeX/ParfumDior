@@ -58,5 +58,24 @@
         "name": "Full Name",
         "password": "Password",
         "alreadyHave": "Have an account?"
+    },
+    
+    "UserProfile": {
+        "profile": "Profile",
+        "order": "Order History",
+        "wishlist": "My Wishlist",
+        "wallet": "My Wallet",
+        "logOut": "Log Out",
+        "delete": "Delete Account",
+        "personalData": "Personal Data",
+        "orders": "Orders",
+        "sales": "Sales",
+        "personalInfo": "Personal Information",
+        "fullName": "Full Name",
+        "phone": "Phone",
+        "member": "Membership",
+        "email": "Email",
+        "memberSince": "Member since",
+        "id": " Customer id"
     }
 }
