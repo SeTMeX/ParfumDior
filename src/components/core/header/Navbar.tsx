@@ -51,22 +51,22 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-8 h-16 flex items-center justify-between text-foreground">
-        {/* LEFT — hidden on mobile */}
-        <div className="hidden md:flex items-center gap-6 flex-1">
+        {/* LEFT — hidden on small mobile, visible on larger screens */}
+        <div className="hidden sm:flex items-center gap-4 lg:gap-6 flex-1">
           <div className="flex items-center gap-2">
             <button className="p-2 rounded-full hover:bg-accent transition text-muted-foreground">
-              <Sun size={20} />
+              <Sun className="w-5 h-5" />
             </button>
             <button className="p-2 rounded-full hover:bg-accent transition text-muted-foreground">
-              <Moon size={20} />
+              <Moon className="w-5 h-5" />
             </button>
           </div>
-          <div className="flex items-center gap-1.5 text-muted-foreground rounded-2xl px-1 py-1.5">
+          <div className="flex items-center gap-1 lg:gap-1.5 text-muted-foreground rounded-2xl px-1 py-1.5">
             <button
               onClick={() => {
                 changeLng("ro");
               }}
-              className="hover:bg-accent hover:text-accent-foreground bg-secondary hover:scale-110 rounded-lg font-medium px-2 py-1.5 transition text-sm tracking-wide"
+              className="hover:bg-accent hover:text-accent-foreground bg-secondary hover:scale-110 rounded-lg font-medium px-2 lg:px-3 py-1.5 transition text-xs lg:text-sm tracking-wide"
             >
               RO
             </button>
@@ -75,33 +75,44 @@ const Navbar = () => {
               onClick={() => {
                 changeLng("en");
               }}
-              className="hover:bg-accent hover:text-accent-foreground bg-secondary hover:scale-110 rounded-lg font-medium px-2 py-1.5 transition text-sm tracking-wide"
+              className="hover:bg-accent hover:text-accent-foreground bg-secondary hover:scale-110 rounded-lg font-medium px-2 lg:px-3 py-1.5 transition text-xs lg:text-sm tracking-wide"
             >
               EN
             </button>
           </div>
         </div>
 
-        {/* RIGHT — desktop buttons hidden on mobile, hamburger visible only on mobile */}
-        <div className="flex items-center gap-4 flex-1 justify-end">
+        {/* MIDDLE — centered home button */}
+        <div className="hidden sm:flex items-center justify-center flex-1">
+          <Link
+            to="/"
+            className="p-2 rounded-full hover:bg-accent transition text-muted-foreground"
+            aria-label="Home"
+          >
+            <Home className="w-5 h-5" />
+          </Link>
+        </div>
+
+        {/* RIGHT — responsive buttons */}
+        <div className="flex items-center gap-2 sm:gap-4 flex-1 justify-end">
           {/* signin login */}
 
           {isAuth ? (
-            <div className="flex gap-2 items-center">
+            <div className="hidden sm:flex gap-2 items-center">
               <Link to="/user">
-                <button className="hidden md:block p-2 rounded-full hover:bg-accent transition text-muted-foreground">
-                  <User size={25} />
+                <button className="hidden sm:block p-2 rounded-full hover:bg-accent transition text-muted-foreground">
+                  <User className="w-5 h-5" />
                 </button>
               </Link>
 
-              <button className="hidden md:block p-2 rounded-full hover:bg-accent transition text-muted-foreground">
-                <Heart size={20} />
+              <button className="hidden sm:block p-2 rounded-full hover:bg-accent transition text-muted-foreground">
+                <Heart className="w-5 h-5" />
               </button>
             </div>
           ) : (
-            <div className="hidden md:flex items-center gap-1.5 text-muted-foreground rounded-2xl px-2 py-1.5">
+            <div className="hidden sm:flex items-center gap-1 lg:gap-1.5 text-muted-foreground rounded-2xl px-2 py-1.5">
               <button
-                className="hover:bg-accent hover:text-accent-foreground bg-secondary hover:scale-110 rounded-lg font-medium px-4 py-1.5 transition text-sm tracking-wide"
+                className="hover:bg-accent hover:text-accent-foreground bg-secondary hover:scale-110 rounded-lg font-medium px-3 lg:px-4 py-1.5 transition text-xs lg:text-sm tracking-wide"
                 onClick={() => {
                   setShowRegister(true);
                 }}
@@ -109,7 +120,7 @@ const Navbar = () => {
                 {t("navBar.leftDiv.sign-in")}
               </button>
               <button
-                className="hover:bg-accent hover:text-accent-foreground bg-secondary hover:scale-110 rounded-lg font-medium px-4 py-1.5 transition text-sm tracking-wide"
+                className="hover:bg-accent hover:text-accent-foreground bg-secondary hover:scale-110 rounded-lg font-medium px-3 lg:px-4 py-1.5 transition text-xs lg:text-sm tracking-wide"
                 onClick={() => {
                   setShowLogin(true);
                 }}
@@ -119,9 +130,9 @@ const Navbar = () => {
             </div>
           )}
 
-          <div className="hidden md:block relative">
+          <div className="hidden sm:block relative">
             <button className="p-2 rounded-full hover:bg-accent transition text-muted-foreground">
-              <ShoppingCart size={20} />
+              <ShoppingCart className="w-5 h-5" />
             </button>
             <span className="absolute -top-1 -right-1 bg-destructive text-destructive-foreground text-xs px-1.5 rounded-full">
               1
@@ -129,16 +140,20 @@ const Navbar = () => {
           </div>
 
           {/* Mobile-only: cart + user + hamburger */}
-          <div className="flex md:hidden items-center gap-2">
+          <div className="flex sm:hidden items-center gap-2">
+            {isAuth ? (
+              <Link to="/user">
+                <button className="p-2 rounded-full hover:bg-accent transition text-muted-foreground">
+                  <User className="w-5 h-5" />
+                </button>
+              </Link>
+            ) : null}
             <button className="p-2 rounded-full hover:bg-accent transition text-muted-foreground">
-              <User size={22} />
-            </button>
-            <button className="p-2 rounded-full hover:bg-accent transition text-muted-foreground">
-              <Heart size={20} />
+              <Heart className="w-5 h-5" />
             </button>
             <div className="relative">
               <button className="p-2 rounded-full hover:bg-accent transition text-muted-foreground">
-                <ShoppingCart size={20} />
+                <ShoppingCart className="w-5 h-5" />
               </button>
               <span className="absolute -top-1 -right-1 bg-destructive text-destructive-foreground text-xs px-1.5 rounded-full">
                 1
@@ -149,7 +164,11 @@ const Navbar = () => {
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label="Toggle menu"
             >
-              {menuOpen ? <X size={22} /> : <Menu size={22} />}
+              {menuOpen ? (
+                <X className="w-5 h-5" />
+              ) : (
+                <Menu className="w-5 h-5" />
+              )}
             </button>
           </div>
         </div>
@@ -160,6 +179,7 @@ const Navbar = () => {
           onShowRegister={() => setShowRegister(true)}
           onShowLogin={() => setShowLogin(true)}
           cartCount={1}
+          isOpen={menuOpen}
         />
       )}
 
