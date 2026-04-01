@@ -2,12 +2,16 @@ import perfumes from "../../../assets/data/products.json";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import PerfumeCard from "./PerfumeCard";
+import { createProduct } from "@/api/request";
+import {toast} from "sonner"
+import { useNavigate } from "react-router-dom";
 
 export default function FragranceSection() {
+  const navigate = useNavigate()
   const { t } = useTranslation();
   const [index, setIndex] = useState(0);
   const [showModal, setShowModal] = useState(false)
-  const [form, setForm] = useState({ name: "", price: "", category: "" });
+  const [form, setForm] = useState({ name: "", price: 0, category: "" });
 
   const next = () => {
     if (index >= perfumes.length - 2) setIndex(0);
@@ -20,6 +24,16 @@ export default function FragranceSection() {
   };
 
   const visible = perfumes.slice(index, index + 2);
+
+  const submitProduct = () =>{
+    createProduct(form).then((response)=>{      
+      toast.success('Produsul a fost creat')
+      navigate('/products')
+    }).catch((error)=>{
+            toast.error(error.message)
+    })
+    
+  }
 
   return (
     <section className="w-full py-6 bg-black text-white">
@@ -114,7 +128,7 @@ export default function FragranceSection() {
               <input
                 type="number"
                 value={form.price}
-                onChange={(e) => setForm({ ...form, price: e.target.value })}
+                onChange={(e) => setForm({ ...form, price: +e.target.value })}
                 className="bg-gray-800 border border-white/10 rounded-lg px-4 py-2 text-white outline-none focus:border-blue-500"
                 placeholder="1000"
               />
@@ -135,7 +149,8 @@ export default function FragranceSection() {
               <button onClick={() => setShowModal(false)} className="px-5 py-2 rounded-full border border-white/20 hover:bg-white hover:text-black transition">
                 Cancel
               </button>
-              <button className="px-5 py-2 rounded-full bg-blue-600 hover:bg-blue-500 transition">
+              <button onClick={submitProduct}
+              className="px-5 py-2 rounded-full bg-blue-600 hover:bg-blue-500 transition">
                 Add Product
               </button>
             </div>

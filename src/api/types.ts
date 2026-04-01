@@ -27,3 +27,34 @@ export interface UserDto {
 }
 
 export type UpdateUserDto = Pick<UserDto, 'firstName' | 'lastName' | 'phoneNumber'>
+
+export interface ProductDto {
+    price: number,
+    name: string,
+    category: string
+}
+
+export interface GetAllProductsResponse {
+    data: Product[],
+    meta: MetaResponse
+}
+
+export interface Product {
+  id: string;
+  createdAt: string; // or Date if you parse it
+  updatedAt: string; // or Date
+  deletedAt: string | null;
+  name: string;
+  price: number;
+  category: string;
+}
+
+export interface MetaResponse {
+    page: string,
+    take: string,
+    itemCount: number,
+    pageCount: number,
+    hasPreviousPage: boolean,
+    hasNextPage: boolean
+}
+

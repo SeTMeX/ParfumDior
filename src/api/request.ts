@@ -1,5 +1,5 @@
 import api from './axios'
-import type { LoginDto, RegisterDto, RegisterResponse, UserDto, UpdateUserDto } from './types';
+import type { LoginDto, RegisterDto, RegisterResponse, UserDto, UpdateUserDto, ProductDto, GetAllProductsResponse, Product} from './types';
 
 
 export async function Register(data: RegisterDto){
@@ -20,4 +20,24 @@ export async function UserProfile(){
 export async function UpdateUserProfile(data: UpdateUserDto){
     const response = await api.patch<UpdateUserDto>('/user/profile', data)
     return response.data;
+}
+
+export async function createProduct(data: ProductDto){
+    const response = await api.post<Product>('/product', data)
+    return response.data
+}
+
+export async function getProducts(page = 1, take = 20, order: "ASC" | "DESC" = "ASC"){
+    const response = await api.get<GetAllProductsResponse>(`/product?order=${order}&page=${page}&take=${take}`)
+    return response.data
+}
+
+export async function updateProducts(data: ProductDto , productId: string){
+    const response = await api.patch<Product>(`/product/${productId}`, data)
+    return response.data
+}
+
+export async function getProductById(productId: string){
+    const response = await api.get<Product>(`/product/find/${productId}`)
+    return response.data
 }
