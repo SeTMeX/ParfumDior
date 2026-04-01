@@ -32,6 +32,9 @@
     "leftDiv": {
       "sign-in": "Înregistrare",
       "log-in": "Autentificare"
+    },
+    "user": {
+      "profile": "Profil"
     }
   },
   "footer": {
@@ -77,5 +80,5 @@
     "email": "Email",
     "memberSince": "Membru din",
     "id": "ID Client"
-}
+  }
 }
