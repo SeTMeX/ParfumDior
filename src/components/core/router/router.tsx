@@ -1,5 +1,6 @@
 import AboutUsPage from "@/pages/AboutUsPage";
 import HomePage from "@/pages/HomePage";
+import LikePage from "@/pages/LikePage";
 import ProductPage from "@/pages/ProductPage";
 import TeamPage from "@/pages/TeamPage";
 import UserPage from "@/pages/UserPage";
@@ -51,6 +52,13 @@ interface RoutesI {
         title:'ProductPage',
         path:'/products',
         element:<ProductPage/>, 
+        isAuth:false
+    },
+{
+        name:'LikePage',
+        title:'LikePage',
+        path:'/likes',
+        element:<LikePage/>, 
         isAuth:false
     }
  ]
