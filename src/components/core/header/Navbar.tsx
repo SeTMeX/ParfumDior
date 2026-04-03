@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useCartTotalItems } from "@/stores/useCartStore";
 import {
   User,
   ShoppingCart,
@@ -19,6 +20,7 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const { i18n, t } = useTranslation();
+  const totalItems = useCartTotalItems();
   const [showRegister, setShowRegister] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
 
@@ -130,14 +132,18 @@ const Navbar = () => {
             </div>
           )}
 
-          <div className="hidden sm:block relative">
-            <button className="p-2 rounded-full hover:bg-accent transition text-muted-foreground">
-              <ShoppingCart className="w-5 h-5" />
-            </button>
-            <span className="absolute -top-1 -right-1 bg-destructive text-destructive-foreground text-xs px-1.5 rounded-full">
-              1
-            </span>
-          </div>
+          {isAuth && (
+            <div className="hidden sm:block relative">
+              <Link to="/cart">
+                <button className="p-2 rounded-full hover:bg-accent transition text-muted-foreground">
+                  <ShoppingCart className="w-5 h-5" />
+                </button>
+              </Link>
+              <span className="absolute -top-1 -right-1 bg-destructive text-destructive-foreground text-xs px-1.5 rounded-full">
+                {totalItems}
+              </span>
+            </div>
+          )}
 
           {/* Mobile-only: cart + user + hamburger */}
           <div className="flex sm:hidden items-center gap-2">
@@ -151,14 +157,18 @@ const Navbar = () => {
             <button className="p-2 rounded-full hover:bg-accent transition text-muted-foreground">
               <Heart className="w-5 h-5" />
             </button>
-            <div className="relative">
-              <button className="p-2 rounded-full hover:bg-accent transition text-muted-foreground">
-                <ShoppingCart className="w-5 h-5" />
-              </button>
-              <span className="absolute -top-1 -right-1 bg-destructive text-destructive-foreground text-xs px-1.5 rounded-full">
-                1
-              </span>
-            </div>
+            {isAuth && (
+              <div className="relative">
+                <Link to="/cart">
+                  <button className="p-2 rounded-full hover:bg-accent transition text-muted-foreground">
+                    <ShoppingCart className="w-5 h-5" />
+                  </button>
+                </Link>
+                <span className="absolute -top-1 -right-1 bg-destructive text-destructive-foreground text-xs px-1.5 rounded-full">
+                  {totalItems}
+                </span>
+              </div>
+            )}
             <button
               className="p-2 rounded-full hover:bg-accent transition text-muted-foreground"
               onClick={() => setMenuOpen(!menuOpen)}
