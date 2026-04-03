@@ -62,7 +62,6 @@
     "password": "Parola",
     "alreadyHave": "Ai deja un cont?"
   },
-
   "UserProfile": {
     "profile": "Profil",
     "order": "Istoricul Comenzilor",
@@ -80,5 +79,16 @@
     "email": "Email",
     "memberSince": "Membru din",
     "id": "ID Client"
+  },
+  "likesPage": {
+    "collection": "Colecția ta",
+    "title": "Parfumuri",
+    "titleSpan": "apreciate",
+    "item": "produs",
+    "items": "produse",
+    "emptyTitle": "Nu ai parfumuri salvate încă",
+    "emptyText": "Explorează colecția și apasă pe inimă pentru a salva favoritele.",
+    "explore": "Explorează Colecția",
+    "addToCart": "Adaugă în Coș"
   }
 }

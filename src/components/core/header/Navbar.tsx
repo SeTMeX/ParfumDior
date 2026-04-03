@@ -104,10 +104,13 @@ const Navbar = () => {
                   <User className="w-5 h-5" />
                 </button>
               </Link>
-
-              <button className="hidden sm:block p-2 rounded-full hover:bg-accent transition text-muted-foreground">
-                <Heart className="w-5 h-5" />
-              </button>
+              
+              <Link to="/likes">
+                <button className="hidden sm:block p-2 rounded-full hover:bg-accent transition text-muted-foreground">
+                  <Heart className="w-5 h-5" />
+                </button>
+              </Link>
+              
             </div>
           ) : (
             <div className="hidden sm:flex items-center gap-1 lg:gap-1.5 text-muted-foreground rounded-2xl px-2 py-1.5">
