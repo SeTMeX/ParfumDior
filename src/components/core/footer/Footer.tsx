@@ -88,7 +88,6 @@ const Footer = () => {
               />
               <button className="bg-primary hover:bg-primary/90 text-primary-foreground text-xs font-medium px-4 py-2 rounded-full shrink-0 transition">
                 {t("footer.newsletter.subbtn")}
-                {t("footer.newsletter.subbtn")}
               </button>
             </div>
           </div>
