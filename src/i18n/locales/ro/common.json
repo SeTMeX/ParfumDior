@@ -1,20 +1,20 @@
 {
   "hello": "Salut",
-  "homePage": {
-    "title": "Produse Luxoase",
-    "span1": "O concentrație extraordinară de arome care combină",
-    "span2": "prospețimea condimentelor cu căldura lemnului.",
-    "button": "CUMPĂRĂ ACUM"
-  },
   "newArrivals": "Noutăți",
   "allProducts": "Toate Produsele →",
-  "allScents": "Toate Aromele",
+  "allScents": "Note de Parfum",
   "descriptionText": "Parfum excepțional realizat cu ingrediente premium.",
   "fragrancesYouWont": "Parfumuri pe care nu le",
   "findElsewhere": "vei găsi în altă parte.",
   "signatureCollection": "Colecție Semnătură",
   "highQualityFairPrice": "Calitate Înaltă, Preț Corect",
   "sourceIngredientsText": "Folosim ingrediente de la aceleași case ca brandurile de lux pentru a crea parfumuri excepționale.",
+  "homePage": {
+    "title": "Produse Luxoase",
+    "span1": "O concentrație extraordinară de arome care combină",
+    "span2": "prospețimea condimentelor cu căldura lemnului.",
+    "button": "CUMPĂRĂ ACUM"
+  },
   "flavors": {
     "jasmine": "Iasomie",
     "rose": "Trandafir",
