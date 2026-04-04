@@ -27,5 +27,5 @@ export const useUser = () => {
     }
   }, [user, reset, setUser, UserProfile]);
 
-  return { user };
+  return { user, setUser };
 };

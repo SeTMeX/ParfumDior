@@ -11,7 +11,7 @@ interface RouterLayoutProps {
 const RouterLayout =({children,hideFooter = false, hideNavbar = false}:RouterLayoutProps)=>{
         
     return(
-        <div className="w-screen flex flex-col">
+        <div className="flex flex-col">
             {!hideNavbar && <Navbar/>}
             {children}
             {!hideFooter && <Footer/>}

@@ -128,7 +128,7 @@
     @apply border-border outline-ring/50 font-playpen;
     }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground ;
     }
 }
 .product {
