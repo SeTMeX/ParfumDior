@@ -15,6 +15,7 @@ import { useTranslation } from "react-i18next";
 import NavbarMobileMenu from "@/components/core/header/NavbarMobileMenu.tsx";
 import Registration from "@/components/core/auth/Registration.tsx";
 import LogIn from "@/components/core/auth/LogIn.tsx";
+import { useTheme } from "next-themes"; 
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -23,6 +24,7 @@ const Navbar = () => {
   const totalItems = useCartTotalItems();
   const [showRegister, setShowRegister] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
+  const{ setTheme , theme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,7 +48,7 @@ const Navbar = () => {
   const isAuth = localStorage.getItem("accessToken");
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+      className={`bg-background fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         scrolled || menuOpen
           ? "backdrop-blur-md bg-background/80 border-b border-border shadow-lg"
           : "bg-background border-b border-border shadow-md"
@@ -56,10 +58,10 @@ const Navbar = () => {
         {/* LEFT — hidden on small mobile, visible on larger screens */}
         <div className="hidden sm:flex items-center gap-4 lg:gap-6 flex-1">
           <div className="flex items-center gap-2">
-            <button className="p-2 rounded-full hover:bg-accent transition text-muted-foreground">
+            <button onClick={() => setTheme("light")} className="p-2 rounded-full hover:bg-accent transition text-muted-foreground">
               <Sun className="w-5 h-5" />
             </button>
-            <button className="p-2 rounded-full hover:bg-accent transition text-muted-foreground">
+            <button onClick={() => setTheme("dark")} className="p-2 rounded-full hover:bg-accent transition text-muted-foreground">
               <Moon className="w-5 h-5" />
             </button>
           </div>
