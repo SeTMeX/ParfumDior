@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useReducer, useEffect } from "react";
 import { getProductById } from "@/api/request";
 import { toast } from "sonner";
 import type { Product } from "@/api/types";
@@ -93,35 +93,67 @@ const LikeCard = ({
 export default function LikesPage() {
   const { likedIds, toggleLike } = useLikesStore();
 
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(false);
   const { t } = useTranslation();
-  // Fetch each liked product by ID
-  useEffect(() => {
-    if (likedIds.length === 0) {
-      setProducts([]);
-      return;
-    }
 
-    setLoading(true);
-    Promise.all(likedIds.map((id) => getProductById(id)))
-      .then((results) => setProducts(results))
-      .catch((err) => toast.error(err.message))
-      .finally(() => setLoading(false));
+  // State reducer to avoid direct setState in useEffect
+  const [state, dispatch] = useReducer(
+    (
+      state: { products: Product[]; loading: boolean },
+      action:
+        | { type: "SET_LOADING"; payload: boolean }
+        | { type: "SET_PRODUCTS"; payload: Product[] },
+    ) => {
+      switch (action.type) {
+        case "SET_LOADING":
+          return { ...state, loading: action.payload };
+        case "SET_PRODUCTS":
+          return { ...state, products: action.payload };
+        default:
+          return state;
+      }
+    },
+    { products: [], loading: false },
+  );
+
+  // Fetch products when likedIds change
+  useEffect(() => {
+    const fetchProducts = async () => {
+      if (likedIds.length === 0) {
+        dispatch({ type: "SET_PRODUCTS", payload: [] });
+        dispatch({ type: "SET_LOADING", payload: false });
+        return;
+      }
+
+      dispatch({ type: "SET_LOADING", payload: true });
+      try {
+        const results = await Promise.all(
+          likedIds.map((id) => getProductById(id)),
+        );
+        dispatch({ type: "SET_PRODUCTS", payload: results });
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      } catch (err: any) {
+        toast.error(err.message);
+      } finally {
+        dispatch({ type: "SET_LOADING", payload: false });
+      }
+    };
+
+    fetchProducts();
   }, [likedIds]);
+
+  const { products, loading } = state;
 
   const handleRemove = (id: string) => {
     toggleLike(id); // removes from store → triggers useEffect → removes from list
   };
 
-  const handleAddToCart = (id: string) => {
+  const handleAddToCart = () => {
     // TODO: plug your cart logic here
   };
 
   return (
     <div className="min-h-screen bg-black text-white px-6 py-12">
       <div className="max-w-6xl mx-auto">
-
         {/* ── Heading ── */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10">
           <div>
@@ -129,16 +161,21 @@ export default function LikesPage() {
               {t("likesPage.collection")}
             </p>
             <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">
-              {t("likesPage.title")} <span className="text-zinc-600">{t("likesPage.titleSpan")}</span>
+              {t("likesPage.title")}{" "}
+              <span className="text-zinc-600">{t("likesPage.titleSpan")}</span>
             </h1>
           </div>
 
           {!loading && (
             <div className="flex items-center gap-2 bg-zinc-900 border border-zinc-800 rounded-full px-5 py-2.5">
               <HeartIcon filled />
-              <span className="text-white font-semibold">{products.length}</span>
+              <span className="text-white font-semibold">
+                {products.length}
+              </span>
               <span className="text-zinc-500 text-sm">
-                {products.length === 1 ? t("likesPage.item") : t("likesPage.items")}
+                {products.length === 1
+                  ? t("likesPage.item")
+                  : t("likesPage.items")}
               </span>
             </div>
           )}
@@ -172,7 +209,7 @@ export default function LikesPage() {
                 {t("likesPage.emptyTitle")}
               </p>
               <p className="text-zinc-500 text-sm">
-               {t("likesPage.emptyText")}
+                {t("likesPage.emptyText")}
               </p>
             </div>
             {/* TODO: wire to your router */}
@@ -181,7 +218,6 @@ export default function LikesPage() {
             </button>
           </div>
         )}
-
       </div>
     </div>
   );

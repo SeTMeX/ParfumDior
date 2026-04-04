@@ -1,10 +1,6 @@
-import type { RegisterDto } from "@/api/types";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
-import { useState } from "react";
-import { Register } from "@/api/request";
-import { toast } from "sonner";
-import { PHONE_REGEX } from "@/data/const.ts";
-import {useRegisterForm} from "@/hooks/useRegisterForm"
+import useUserStore from "@/stores/useUserStore";
+import { useRegisterForm } from "@/hooks/useRegisterForm";
 
 interface RegisterFormProps {
   show: boolean;
@@ -12,8 +8,20 @@ interface RegisterFormProps {
 }
 
 const RegisterForm = ({ show, onClose }: RegisterFormProps) => {
-
-  const { firstName, setFirstName, lastName, setLastName, phoneNumber, setPhoneNumber, email, setEmail, password, setPassword, onSubmit } = useRegisterForm(onClose)
+  const setUser = useUserStore((state) => state.setUser);
+  const {
+    firstName,
+    setFirstName,
+    lastName,
+    setLastName,
+    phoneNumber,
+    setPhoneNumber,
+    email,
+    setEmail,
+    password,
+    setPassword,
+    onSubmit,
+  } = useRegisterForm(onClose, setUser);
 
   return (
     <Dialog open={show} onOpenChange={onClose}>

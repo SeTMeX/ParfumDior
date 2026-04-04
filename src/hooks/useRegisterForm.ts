@@ -1,10 +1,10 @@
-import type { RegisterDto } from "@/api/types";
-import { Register } from "@/api/request";
+import type { RegisterDto, UserDto } from "@/api/types";
+import { Register, UserProfile } from "@/api/request";
 import { toast } from "sonner";
 import { useState } from "react";
 import { PHONE_REGEX } from "@/data/const.ts";
 
-export const useRegisterForm = (onClose: () => void) => {
+export const useRegisterForm = (onClose: () => void, setUser?: (user: UserDto) => void) => {
 
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
@@ -53,9 +53,13 @@ export const useRegisterForm = (onClose: () => void) => {
                 email,
                 password
             }
-            Register(payload).then((response) => {
+            Register(payload).then(async (response) => {
                 localStorage.setItem('accessToken', response.accessToken)
                 localStorage.setItem('refreshToken', response.refreshToken)
+                if (setUser) {
+                    const profile = await UserProfile();
+                    setUser(profile);
+                }
                 toast.success("Va-ti inregistrat cu success")
                 onClose()
             }).catch((error) => {
