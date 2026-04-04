@@ -44,8 +44,8 @@ export interface GetAllProductsResponse {
 
 export interface Product {
   id: string;
-  createdAt: string; // or Date if you parse it
-  updatedAt: string; // or Date
+  createdAt: string;
+  updatedAt: string; 
   deletedAt: string | null;
   name: string;
   price: number;

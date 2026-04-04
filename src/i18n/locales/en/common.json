@@ -35,25 +35,52 @@
     },
     "user": {
       "profile": "Profile"
-    }
-  },
-  "footer": {
-    "left-sec": {
-      "p-text": "We are a premium fragrance brand crafting distinctive scents designed to elevate everyday moments."
+  
     },
-    "newsletter": {
-      "subtext1": "Subscribe to",
-      "subtext2": " get Our Newsletter",
-      "email": "Enter your email",
-      "subbtn": "Subscribe",
-      "adress": "ADDRESS",
-      "phone": "PHONE"
+    "footer": {
+        "left-sec": {
+            "p-text": "We are a premium fragrance brand crafting distinctive scents designed to elevate everyday moments."
+        },
+        "newsletter": {
+            "subtext1": "Subscribe to",
+            "subtext2": " get Our Newsletter",
+            "email": "Enter your email",
+            "subbtn": "Subscribe",
+            "adress": "ADRESS",
+            "phone": "PHONE"
+        },
+        "bottomsec": {
+            "rights": "All Rights Reserved",
+            "faq": "FAQ",
+            "terms": "Term of Service",
+            "policy": "Privacy Policy"
+        }
     },
-    "bottomsec": {
-      "rights": "All Rights Reserved",
-      "faq": "FAQ",
-      "terms": "Term of Service",
-      "policy": "Privacy Policy"
+    "SignUp": {
+        "create": "Create a free account with your email",
+        "name": "Full Name",
+        "password": "Password",
+        "alreadyHave": "Have an account?"
+    },
+    
+    "UserProfile": {
+        "profile": "Profile",
+        "order": "Order History",
+        "wishlist": "My Wishlist",
+        "wallet": "My Wallet",
+        "logOut": "Log Out",
+        "delete": "Delete Account",
+        "personalData": "Personal Data",
+        "orders": "Orders",
+        "sales": "Sales",
+        "personalInfo": "Personal Information",
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "phone": "Phone",
+        "member": "Membership",
+        "email": "Email",
+        "memberSince": "Member since",
+        "id": " Customer id"
     }
   },
   "SignUp": {

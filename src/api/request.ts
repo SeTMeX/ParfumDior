@@ -25,9 +25,9 @@ export async function UserProfile() {
   return response.data;
 }
 
-export async function UpdateUserProfile(data: UpdateUserDto) {
-  const response = await api.patch<UpdateUserDto>("/user/profile", data);
-  return response.data;
+export async function UpdateUserProfile(data: UpdateUserDto){
+    const response = await api.patch<UserDto>('/user/profile', data)
+    return response.data;
 }
 
 export async function createProduct(data: ProductDto) {
