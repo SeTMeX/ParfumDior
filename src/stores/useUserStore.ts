@@ -18,7 +18,7 @@ const useUserStore = create<UserStoreI>()(
       },
 
       reset: () => {
-        localStorage.removeItem('accessToken')
+        localStorage.removeItem("accessToken");
         set(() => ({ user: null }));
       },
     }),

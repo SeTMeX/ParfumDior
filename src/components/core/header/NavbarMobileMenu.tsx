@@ -92,9 +92,11 @@ const NavbarMobileMenu = ({
             <button className="flex-1 p-2 rounded-full hover:bg-accent transition text-muted-foreground flex items-center justify-center">
               <Heart className="w-5 h-5" />
             </button>
-            <button className="flex-1 p-2 rounded-full hover:bg-accent transition text-muted-foreground flex items-center justify-center">
-              <ShoppingCart className="w-5 h-5" />
-            </button>
+            <Link to="/cart" className="flex-1">
+              <button className="w-full p-2 rounded-full hover:bg-accent transition text-muted-foreground flex items-center justify-center">
+                <ShoppingCart className="w-5 h-5" />
+              </button>
+            </Link>
           </div>
         </div>
       )}

@@ -1,14 +1,14 @@
 import { BrowserRouter } from "react-router-dom";
 import AppRouter from "./components/core/router/AppRouter";
-import {Toaster} from '@/components/ui/sonner'
+import { Toaster } from "@/components/ui/sonner";
 
 function App() {
-    return (
-        <BrowserRouter>
-            <AppRouter/>
-                <Toaster position="top-right" duration={3000}/>
-        </BrowserRouter>
-    );
+  return (
+    <BrowserRouter>
+      <AppRouter />
+      <Toaster position="top-right" duration={3000} />
+    </BrowserRouter>
+  );
 }
 
 export default App;
