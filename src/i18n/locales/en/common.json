@@ -80,5 +80,16 @@
     "email": "Email",
     "memberSince": "Member since",
     "id": " Customer id"
+  },
+  "likesPage": {
+  "collection": "Your Collection",
+  "title": "Liked",
+  "titleSpan": "Fragrances",
+  "item": "item",
+  "items": "items",
+  "emptyTitle": "No liked fragrances yet",
+  "emptyText": "Browse our collection and tap the heart to save your favourites.",
+  "explore": "Explore Collection",
+  "addToCart": "Add to Cart"
   }
 }

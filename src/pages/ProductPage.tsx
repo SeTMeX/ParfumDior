@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getProducts, createProduct } from "@/api/request";
 import { toast } from "sonner";
 import type { Product, MetaResponse } from "@/api/types";
+import useLikesStore from "@/stores/useLikesStore";
 
 const TAKE = 6;
 
@@ -13,7 +14,9 @@ const ProductPage = () => {
     const [showModal, setShowModal] = useState(false);
     const [form, setForm] = useState({ name: "", price: 0, category: "" });
     const [loading, setLoading] = useState(false);
-    const [refresh, setRefresh] = useState(0); // trigger re-fetch after create
+    const [refresh, setRefresh] = useState(0);
+
+    const { toggleLike, isLiked } = useLikesStore();
 
     useEffect(() => {
         let cancelled = false;
@@ -142,6 +145,32 @@ const ProductPage = () => {
                                     <span className="text-slate-600 text-sm">.00</span>
                                 </span>
                             </div>
+
+                            {/* ── LIKE BUTTON ── */}
+                            <button
+                                onClick={() => toggleLike(product.id)}
+                                className="absolute top-4 right-4 p-1.5 rounded-full transition-all duration-300 hover:scale-110"
+                                aria-label="Toggle like"
+                            >
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    className={`w-5 h-5 transition-all duration-300 ${
+                                        isLiked(product.id)
+                                            ? "fill-rose-500 stroke-rose-500"
+                                            : "fill-none stroke-slate-600 hover:stroke-slate-400"
+                                    }`}
+                                    strokeWidth={1.5}
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935
+                                           0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1
+                                           3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
+                                    />
+                                </svg>
+                            </button>
+
                             <div
                                 className="absolute bottom-0 left-7 right-7 h-px opacity-0 group-hover:opacity-100 transition"
                                 style={{
