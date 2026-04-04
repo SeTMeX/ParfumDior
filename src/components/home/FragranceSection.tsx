@@ -3,15 +3,25 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import PerfumeCard from "./PerfumeCard";
 import { createProduct } from "@/api/request";
-import {toast} from "sonner"
+import { toast } from "sonner"
 import { useNavigate } from "react-router-dom";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from "@/components/ui/dialog";
+import LogIn from "../core/auth/LogIn";
 
 export default function FragranceSection() {
   const navigate = useNavigate()
   const { t } = useTranslation();
   const [index, setIndex] = useState(0);
   const [showModal, setShowModal] = useState(false)
-  const [form, setForm] = useState({ name: "", price: 0, category: "" });
+  const [form, setForm] = useState({ name: "", price: "", category: "" });
+  const [errors, setErrors] = useState({ name: "", price: "", category: "" })
+  const [showLogin, setShowLogin] = useState(false);
 
   const next = () => {
     if (index >= perfumes.length - 2) setIndex(0);
@@ -25,14 +35,25 @@ export default function FragranceSection() {
 
   const visible = perfumes.slice(index, index + 2);
 
-  const submitProduct = () =>{
-    createProduct(form).then((response)=>{      
-      toast.success('Produsul a fost creat')
-      navigate('/products')
-    }).catch((error)=>{
-            toast.error(error.message)
-    })
-    
+  const submitProduct = () => {
+    const newErrors = {
+      name: form.name.trim() === "" ? "Name is required" : "",
+      price: form.price === "" ? "Price is required" : "",
+      category: form.category === "" ? "Category is required" : "",
+    }
+    setErrors(newErrors);
+
+    const hasErrors = Object.values(newErrors).some((e) => e !== "");
+    if (hasErrors) return;
+
+    createProduct({ ...form, price: +form.price })
+      .then(() => {
+        toast.success("Produsul a fost creat");
+        navigate("/products");
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
   }
 
   return (
@@ -49,7 +70,15 @@ export default function FragranceSection() {
             </button>
             <button
               className="border border-white/20 px-5 py-2 rounded-full hover:bg-white hover:text-black transition"
-              onClick={() => setShowModal(true)}
+              onClick={() => {
+                const token = localStorage.getItem("accessToken");
+                if (!token) {
+                  setShowLogin(true);
+                  toast.info("Lipsa de autorizare")
+                }else{
+                  setShowModal(true)
+                }
+              }}
             >
               Add a product
             </button>
@@ -107,56 +136,63 @@ export default function FragranceSection() {
           <p className="text-gray-400">{t("sourceIngredientsText")}</p>
         </div>
       </div>
-      {showModal && (
-        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
-          <div className="bg-gray-900 border border-white/10 rounded-2xl p-8 w-full max-w-md flex flex-col gap-5">
-            <h2 className="text-xl font-semibold">Add a Product</h2>
 
-            <div className="flex flex-col gap-1">
-              <label className="text-sm text-gray-400">Name</label>
-              <input
-                type="text"
-                value={form.name}
-                onChange={(e) => setForm({ ...form, name: e.target.value })}
-                className="bg-gray-800 border border-white/10 rounded-lg px-4 py-2 text-white outline-none focus:border-blue-500"
-                placeholder="product_name"
-              />
-            </div>
 
-            <div className="flex flex-col gap-1">
-              <label className="text-sm text-gray-400">Price </label>
-              <input
-                type="number"
-                value={form.price}
-                onChange={(e) => setForm({ ...form, price: +e.target.value })}
-                className="bg-gray-800 border border-white/10 rounded-lg px-4 py-2 text-white outline-none focus:border-blue-500"
-                placeholder="1000"
-              />
-            </div>
+      <Dialog open={showModal} onOpenChange={setShowModal}>
+        <DialogContent className="bg-gray-900 border border-white/10 rounded-2xl p-8 w-full max-w-md flex flex-col gap-5 text-white">
+          <DialogHeader>
+            <DialogTitle className="text-xl font-semibold text-white">Add a Product</DialogTitle>
+          </DialogHeader>
+          <div className="flex flex-col gap-1">
+            <label className="text-sm text-gray-400">Name</label>
+            <input
+              type="text"
+              value={form.name}
+              onChange={(e) => setForm({ ...form, name: e.target.value })}
+              className="bg-gray-800 border border-white/10 rounded-lg px-4 py-2 outline-none focus:border-blue-500"
+              placeholder="product name"
+            />
+            {errors.name && <span className="text-red-400 text-xs">{errors.name}</span>}
 
-            <div className="flex flex-col gap-1">
-              <label className="text-sm text-gray-400">Category </label>
-              <input
-                type="text"
-                value={form.category}
-                onChange={(e) => setForm({ ...form, category: e.target.value })}
-                className="bg-gray-800 border border-white/10 rounded-lg px-4 py-2 text-white outline-none focus:border-blue-500"
-                placeholder="phones"
-              />
-            </div>
-
-            <div className="flex gap-3 justify-end mt-2">
-              <button onClick={() => setShowModal(false)} className="px-5 py-2 rounded-full border border-white/20 hover:bg-white hover:text-black transition">
-                Cancel
-              </button>
-              <button onClick={submitProduct}
-              className="px-5 py-2 rounded-full bg-blue-600 hover:bg-blue-500 transition">
-                Add Product
-              </button>
-            </div>
           </div>
-        </div>
-      )}
+
+          <div className="flex flex-col gap-1">
+            <label className="text-sm text-gray-400">Price </label>
+            <input
+              type="number"
+              value={form.price}
+              onChange={(e) => setForm({ ...form, price: e.target.value })}
+              className="bg-gray-800 border border-white/10 rounded-lg px-4 py-2 outline-none focus:border-blue-500"
+              placeholder="price"
+            />
+            {errors.price && <span className="text-red-400 text-xs">{errors.price}</span>}
+
+          </div>
+
+          <div className="flex flex-col gap-1">
+            <label className="text-sm text-gray-400">Category </label>
+            <input
+              type="text"
+              value={form.category}
+              onChange={(e) => setForm({ ...form, category: e.target.value })}
+              className="bg-gray-800 border border-white/10 rounded-lg px-4 py-2 outline-none focus:border-blue-500"
+              placeholder="ex: phones"
+            />
+            {errors.category && <span className="text-red-400 text-xs">{errors.category}</span>}
+
+          </div>
+          <DialogFooter>
+            <button onClick={() => setShowModal(false)} className="px-5 py-2 rounded-full border border-white/20 hover:bg-white hover:text-black transition">
+              Cancel
+            </button>
+            <button onClick={submitProduct}
+              className=" text-white px-5 py-2 rounded-full bg-blue-600 hover:bg-blue-500 transition">
+              Add Product
+            </button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+      <LogIn show={showLogin} onClose={() => setShowLogin(false)} />
     </section>
   );
 }

@@ -182,7 +182,7 @@ const ProductPage = () => {
 
             {/* ── MODAL ── */}
             {showModal && (
-                <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
+                <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 text-white">
                     <div className="bg-gray-900 border border-white/10 rounded-2xl p-8 w-full max-w-md flex flex-col gap-5">
                         <div className="flex justify-between items-center">
                             <h2 className="text-xl font-semibold tracking-wide">Add a Product</h2>
@@ -190,9 +190,9 @@ const ProductPage = () => {
 
                         {(
                             [
-                                { label: "Name", key: "name", type: "text", placeholder: "product_name" },
-                                { label: "Price", key: "price", type: "number", placeholder: "1000" },
-                                { label: "Category", key: "category", type: "text", placeholder: "phones" },
+                                { label: "Name", key: "name", type: "text", placeholder: "product name" },
+                                { label: "Price", key: "price", type: "number", placeholder: "price" },
+                                { label: "Category", key: "category", type: "text", placeholder: "ex: phones" },
                             ] as const
                         ).map(({ label, key, type, placeholder }) => (
                             <div key={key} className="flex flex-col gap-1">
