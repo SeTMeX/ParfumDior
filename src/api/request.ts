@@ -55,3 +55,10 @@ export async function getProductById(productId: string) {
   const response = await api.get<Product>(`/product/find/${productId}`);
   return response.data;
 }
+
+export const sendVerficationCode = async(email:string) => {
+  const code = await api.post(`/auth/send-verification/`, {
+    email
+  })
+  return code.data
+}

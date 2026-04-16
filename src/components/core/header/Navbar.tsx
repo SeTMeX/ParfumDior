@@ -15,7 +15,8 @@ import { useTranslation } from "react-i18next";
 import NavbarMobileMenu from "@/components/core/header/NavbarMobileMenu.tsx";
 import Registration from "@/components/core/auth/Registration.tsx";
 import LogIn from "@/components/core/auth/LogIn.tsx";
-import { useTheme } from "next-themes"; 
+import { useTheme } from "next-themes";
+import LogInOtp from "../auth/LogInOtp";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -24,7 +25,8 @@ const Navbar = () => {
   const totalItems = useCartTotalItems();
   const [showRegister, setShowRegister] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
-  const{ setTheme , theme } = useTheme();
+  const { setTheme, theme } = useTheme();
+  const [showLogInOtp, setShowLogInOtp] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,9 +39,9 @@ const Navbar = () => {
 
   const location = useLocation();
 
-  useEffect(() => {
-    setMenuOpen(false);
-  }, [location]);
+  // useEffect(() => {
+  //   setMenuOpen(false);
+  // }, [location]);
 
   const changeLng = (lng: string) => {
     i18n.changeLanguage(lng);
@@ -48,11 +50,10 @@ const Navbar = () => {
   const isAuth = localStorage.getItem("accessToken");
   return (
     <nav
-      className={`bg-background fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        scrolled || menuOpen
-          ? "backdrop-blur-md bg-background/80 border-b border-border shadow-lg"
-          : "bg-background border-b border-border shadow-md"
-      }`}
+      className={`bg-background fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled || menuOpen
+        ? "backdrop-blur-md bg-background/80 border-b border-border shadow-lg"
+        : "bg-background border-b border-border shadow-md"
+        }`}
     >
       <div className="max-w-7xl mx-auto px-8 h-16 flex items-center justify-between text-foreground">
         {/* LEFT — hidden on small mobile, visible on larger screens */}
@@ -108,16 +109,24 @@ const Navbar = () => {
                   <User className="w-5 h-5" />
                 </button>
               </Link>
-              
+
               <Link to="/likes">
                 <button className="hidden sm:block p-2 rounded-full hover:bg-accent transition text-muted-foreground">
                   <Heart className="w-5 h-5" />
                 </button>
               </Link>
-              
+
             </div>
           ) : (
             <div className="hidden sm:flex items-center gap-1 lg:gap-1.5 text-muted-foreground rounded-2xl px-2 py-1.5">
+              <button
+                className="hover:bg-accent hover:text-accent-foreground bg-secondary hover:scale-110 rounded-lg font-medium px-3 lg:px-4 py-1.5 transition text-xs lg:text-sm tracking-wide"
+                onClick={() => {
+                  setShowLogInOtp(true);
+                }}
+              >
+                LogIn OTP
+              </button>
               <button
                 className="hover:bg-accent hover:text-accent-foreground bg-secondary hover:scale-110 rounded-lg font-medium px-3 lg:px-4 py-1.5 transition text-xs lg:text-sm tracking-wide"
                 onClick={() => {
@@ -198,11 +207,19 @@ const Navbar = () => {
         />
       )}
 
-      <LogIn show={showLogin} onClose={() => setShowLogin(false)} />
+      <LogInOtp 
+      show={showLogInOtp} 
+      onClose={()=> setShowLogInOtp(false)}
+      />
+      <LogIn 
+      show={showLogin} 
+      onClose={() => setShowLogin(false)} 
+      />
       <Registration
         show={showRegister}
         onClose={() => setShowRegister(false)}
       />
+      
     </nav>
   );
 };
