@@ -13,6 +13,8 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog";
 import LogIn from "../core/auth/LogIn";
+import { useMutation } from "@tanstack/react-query";
+import { Loader } from "lucide-react";
 
 export default function FragranceSection() {
   const navigate = useNavigate()
@@ -22,6 +24,17 @@ export default function FragranceSection() {
   const [form, setForm] = useState({ name: "", price: "", category: "" });
   const [errors, setErrors] = useState({ name: "", price: "", category: "" })
   const [showLogin, setShowLogin] = useState(false);
+
+  const { mutate, isPending } = useMutation({
+    mutationFn: createProduct,
+    onSuccess: () => {
+      toast.success("Produsul a fost creat");
+      navigate("/products");
+    },
+    onError: (error) => {
+      toast.error(error.message);
+    }
+  })
 
   const next = () => {
     if (index >= perfumes.length - 2) setIndex(0);
@@ -46,14 +59,16 @@ export default function FragranceSection() {
     const hasErrors = Object.values(newErrors).some((e) => e !== "");
     if (hasErrors) return;
 
-    createProduct({ ...form, price: +form.price })
-      .then(() => {
-        toast.success("Produsul a fost creat");
-        navigate("/products");
-      })
-      .catch((error) => {
-        toast.error(error.message);
-      });
+    // createProduct({ ...form, price: +form.price })
+    //   .then(() => {
+    //     toast.success("Produsul a fost creat");
+    //     navigate("/products");
+    //   })
+    //   .catch((error) => {
+    //     toast.error(error.message);
+    //   });
+
+    mutate({ ...form, price: +form.price })
   }
 
   return (
@@ -75,7 +90,7 @@ export default function FragranceSection() {
                 if (!token) {
                   setShowLogin(true);
                   toast.info("Lipsa de autorizare")
-                }else{
+                } else {
                   setShowModal(true)
                 }
               }}
@@ -185,9 +200,10 @@ export default function FragranceSection() {
             <button onClick={() => setShowModal(false)} className="px-5 py-2 rounded-full border border-white/20 hover:bg-white hover:text-black transition">
               Cancel
             </button>
-            <button onClick={submitProduct}
-              className=" text-white px-5 py-2 rounded-full bg-blue-600 hover:bg-blue-500 transition">
-              Add Product
+            <button onClick={submitProduct} disabled = {isPending}
+              className="flex items-center gap-2 disabled:opacity-20 text-white px-5 py-2 rounded-full bg-blue-600 hover:bg-blue-500 transition">
+              {isPending ? "Se adauga produsul":"Add Product"}
+              {isPending && <Loader className="animate-spin size-5"/>}
             </button>
           </DialogFooter>
         </DialogContent>
