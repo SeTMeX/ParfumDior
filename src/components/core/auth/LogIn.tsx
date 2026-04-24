@@ -6,6 +6,8 @@ import {
 import { useState } from "react";
 import { toast } from 'sonner'
 import { Login } from "@/api/request"; 
+import { useMutation } from "@tanstack/react-query";
+import { LogIn } from "lucide-react";
 
 interface LogInFormProps {
   show: boolean;
@@ -16,6 +18,21 @@ const LogInForm = ({ show, onClose }: LogInFormProps) => {
   const [emailInput, setEmailInput] = useState('')
   const [passwordInput, setPasswordInput] = useState('')
   
+  const { mutate } = useMutation({
+    mutationFn: Login,
+    onSuccess: (response) => {
+      localStorage.setItem('accessToken', response.accessToken)
+      localStorage.setItem('refreshToken', response.refreshToken)
+      toast.success("Va-ti inregistrat cu success")
+      onClose()
+    },
+    onError: (error) => {
+      // toast.error(error?.response?.data?.message)
+      console.log(error);
+      
+    }
+  })
+
   const submit = () => {
     if (!emailInput) {
       toast.error("email-ul este obligatoriu")
@@ -31,14 +48,16 @@ const LogInForm = ({ show, onClose }: LogInFormProps) => {
       password: passwordInput
     }
 
-    Login(payload).then((response) => {
-      localStorage.setItem('accessToken', response.accessToken)
-      localStorage.setItem('refreshToken', response.refreshToken)
-      toast.success("Va-ti inregistrat cu success")
-      onClose()
-    }).catch((error) => {
-      toast.error(error?.response?.data?.message)
-    })
+    // Login(payload).then((response) => {
+    //   localStorage.setItem('accessToken', response.accessToken)
+    //   localStorage.setItem('refreshToken', response.refreshToken)
+    //   toast.success("Va-ti inregistrat cu success")
+    //   onClose()
+    // }).catch((error) => {
+    //   toast.error(error?.response?.data?.message)
+    // })
+
+    mutate(payload)
   }
   
   return (
