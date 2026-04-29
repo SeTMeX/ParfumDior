@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom"
 import { useUser } from "@/hooks/useUser"
 import { useState } from "react"
 import { UpdateUserProfile } from "@/api/request"
-import type { UpdateUserDto } from "@/api/types"
+import type { UpdateUserDto, UserDto } from "@/api/types"
 
 const UserPage = () => {
     const { user, setUser } = useUser()
@@ -15,15 +15,29 @@ const UserPage = () => {
     const [edit, setEdit] = useState(false)
     const [form, setForm] = useState<UpdateUserDto>({ firstName: '', lastName: '', phoneNumber: '' })
 
-    const onSave = () =>{
-        UpdateUserProfile(form).then((response)=>{
+    // const onSave = () =>{
+    //     UpdateUserProfile(form).then((response)=>{
+    //         toast.success("Schimbarile au fost aplicate")
+    //         setUser(response)
+    //         setEdit(false)
+    //     }).catch((error)=>{
+    //         toast.error(error.message)
+    //     })
+    // }
+    const { mutate } = useMutation({
+        mutationFn: UpdateUserProfile,
+        onSuccess: (response) => {
             toast.success("Schimbarile au fost aplicate")
             setUser(response)
             setEdit(false)
-        }).catch((error)=>{
+        },
+        onError: (error) => {
             toast.error(error.message)
-        })
-    }
+
+        }
+    })
+
+    mutate(form)
 
     return (
         <div className="flex min-h-screen bg-gray-50 pt-16">
@@ -131,7 +145,7 @@ const UserPage = () => {
                                         Cancel
                                     </button>
                                     <button className="text-sm border border-gray-300 px-3 py-1 rounded-lg hover:bg-green-50 hover:text-green-500"
-                                    onClick={onSave}>
+                                    onClick={mutate}>
                                     Save
                                     </button>
                                 </div>
@@ -208,3 +222,7 @@ const UserPage = () => {
 }
 
 export default UserPage
+
+function useMutation(arg0: { mutationFn: (data: UpdateUserDto) => Promise<UserDto>; onSuccess: (response: any) => void; onError: (error: any) => void }): { mutate: any } {
+    throw new Error("Function not implemented.")
+}
