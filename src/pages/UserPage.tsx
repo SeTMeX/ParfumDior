@@ -5,7 +5,8 @@ import { useNavigate } from "react-router-dom"
 import { useUser } from "@/hooks/useUser"
 import { useState } from "react"
 import { UpdateUserProfile } from "@/api/request"
-import type { UpdateUserDto, UserDto } from "@/api/types"
+import type { UpdateUserDto } from "@/api/types"
+import { useMutation } from "@tanstack/react-query"
 
 const UserPage = () => {
     const { user, setUser } = useUser()
@@ -145,8 +146,8 @@ const UserPage = () => {
                                         Cancel
                                     </button>
                                     <button className="text-sm border border-gray-300 px-3 py-1 rounded-lg hover:bg-green-50 hover:text-green-500"
-                                    onClick={mutate}>
-                                    Save
+                                        onClick={mutate}>
+                                        Save
                                     </button>
                                 </div>
                             ) : (
@@ -222,7 +223,3 @@ const UserPage = () => {
 }
 
 export default UserPage
-
-function useMutation(arg0: { mutationFn: (data: UpdateUserDto) => Promise<UserDto>; onSuccess: (response: any) => void; onError: (error: any) => void }): { mutate: any } {
-    throw new Error("Function not implemented.")
-}

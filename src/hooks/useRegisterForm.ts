@@ -3,6 +3,7 @@ import { Register, UserProfile } from "@/api/request";
 import { toast } from "sonner";
 import { useState } from "react";
 import { PHONE_REGEX } from "@/data/const.ts";
+import { useMutation } from "@tanstack/react-query";
 
 export const useRegisterForm = (onClose: () => void, setUser?: (user: UserDto) => void) => {
 
@@ -40,6 +41,23 @@ export const useRegisterForm = (onClose: () => void, setUser?: (user: UserDto) =
 
             return true
         }
+        const { mutate } = useMutation({
+            mutationFn: Register,
+            onSuccess: async (response) =>{
+                localStorage.setItem('accessToken', response.accessToken)
+                localStorage.setItem('refreshToken', response.refreshToken)
+                if (setUser) {
+                    const profile = await UserProfile();
+                    setUser(profile);
+                }
+                toast.success("Va-ti inregistrat cu success")
+                onClose()
+            },
+            onError: (error) => {
+                toast.error(error.message)
+            }
+        })
+
 
         const onSubmit = () => {
             const isValid = validateData()
@@ -53,19 +71,19 @@ export const useRegisterForm = (onClose: () => void, setUser?: (user: UserDto) =
                 email,
                 password
             }
-            Register(payload).then(async (response) => {
-                localStorage.setItem('accessToken', response.accessToken)
-                localStorage.setItem('refreshToken', response.refreshToken)
-                if (setUser) {
-                    const profile = await UserProfile();
-                    setUser(profile);
-                }
-                toast.success("Va-ti inregistrat cu success")
-                onClose()
-            }).catch((error) => {
-                toast.error(error?.response?.data?.message)
-            })
-        
+            // Register(payload).then(async (response) => {
+            //     localStorage.setItem('accessToken', response.accessToken)
+            //     localStorage.setItem('refreshToken', response.refreshToken)
+            //     if (setUser) {
+            //         const profile = await UserProfile();
+            //         setUser(profile);
+            //     }
+            //     toast.success("Va-ti inregistrat cu success")
+            //     onClose()
+            // }).catch((error) => {
+            //     toast.error(error?.response?.data?.message)
+            // })
+        mutate(payload)
     }
 
     return { firstName, setFirstName, lastName, setLastName, phoneNumber, setPhoneNumber, email, setEmail, password, setPassword, onSubmit }

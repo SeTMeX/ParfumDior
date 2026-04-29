@@ -7,7 +7,6 @@ import { useState } from "react";
 import { toast } from 'sonner'
 import { Login } from "@/api/request"; 
 import { useMutation } from "@tanstack/react-query";
-import { LogIn } from "lucide-react";
 
 interface LogInFormProps {
   show: boolean;

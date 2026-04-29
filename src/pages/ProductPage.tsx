@@ -4,40 +4,58 @@ import { toast } from "sonner";
 import type { Product, MetaResponse } from "@/api/types";
 import useLikesStore from "@/stores/useLikesStore";
 import { useCartStore } from "@/stores/useCartStore";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 const TAKE = 6;
 
 const ProductPage = () => {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [meta, setMeta] = useState<MetaResponse | null>(null);
+  // const [products, setProducts] = useState<Product[]>([]);
+  // const [meta, setMeta] = useState<MetaResponse | null>(null);
   const [page, setPage] = useState(1);
   const [order, setOrder] = useState<"ASC" | "DESC">("ASC");
   const [showModal, setShowModal] = useState(false);
   const [form, setForm] = useState({ name: "", price: 0, category: "" });
-  const [loading, setLoading] = useState(false);
-  const [refresh, setRefresh] = useState(0);
+  // const [loading, setLoading] = useState(false);
+  // const [refresh, setRefresh] = useState(0);
 
   const { toggleLike, isLiked } = useLikesStore();
   const { addToCart } = useCartStore();
 
-  useEffect(() => {
-    let cancelled = false;
-    setLoading(true);
-    getProducts(page, TAKE, order)
-      .then((res) => {
-        if (!cancelled) {
-          setProducts(res.data);
-          setMeta(res.meta);
-        }
-      })
-      .catch((err) => toast.error(err.message))
-      .finally(() => {
-        if (!cancelled) setLoading(false);
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, [page, order, refresh]);
+  const queryClient = useQueryClient()
+  const { data, isLoading:loading  } = useQuery({
+    queryKey: ["products", page, order],
+    queryFn: () => getProducts(page, TAKE, order),
+    // enable: page
+    retry: 3, 
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
+    retryOnMount: false,
+    staleTime: 0
+  })
+  
+  const products = data?.data ?? []
+  const meta = data?.meta ?? null
+
+
+  // useEffect(() => {
+  //   let cancelled = false;
+  //   setLoading(true);
+  //   getProducts(page, TAKE, order)
+  //     .then((res) => {
+  //       if (!cancelled) {
+  //         setProducts(res.data);
+  //         setMeta(res.meta);
+  //       }
+  //     })
+  //     .catch((err) => toast.error(err.message))
+  //     .finally(() => {
+  //       if (!cancelled) setLoading(false);
+  //     });
+  //   return () => {
+  //     cancelled = true;
+  //   };
+  // }, [page, order, refresh]);
 
   const handleSort = (o: "ASC" | "DESC") => {
     setOrder(o);
@@ -51,7 +69,8 @@ const ProductPage = () => {
         setShowModal(false);
         setForm({ name: "", price: 0, category: "" });
         setPage(1);
-        setRefresh((r) => r + 1);
+        // setRefresh((r) => r + 1);
+        queryClient.invalidateQueries({ queryKey: ["products", page, order] })
       })
       .catch((err) => toast.error(err.message));
   };
